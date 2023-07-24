@@ -1,59 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lab</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <header>
-      <div
-        class="container-fluid d-flex align-items-center justify-content-center"
-      >
-        <h1>Laboratorio</h1>
-      </div>
-      <nav class="navbar navbar-expand-lg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e27004ce89.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+</body>
+
+<!--header-->
+<header>
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
+        <h1>Laboratorio Paparoti</h1>
+        <hr />
+    </div>
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-            </ul>
-            <span class="navbar-text">
-              Navbar text with an inline element
-            </span>
-          </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Quienes somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Novedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Donde estamos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
+                <a> <i class="fa-solid fa-flask"></i>Acceso para personal</a>
+            </div>
         </div>
-      </nav>
-    </header>
-  </body>
+    </nav>
+</header>
+<!--main-->
+<div id="carouselExampleInterval" class="carousel slide padding40" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+            <div class="container">
+                <img src="images/laboratorio.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+            <div class="container"><img src="images/laboratorio1.jpg" class="d-block w-100" alt="..."></div>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+            <div class="container"><img src="images/laboratorio2.jpg" class="d-block w-100" alt="..."></div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!--main-sobre nosotros-->
+<div class="container text-center padding40">
+    <div class="row">
+        <div class="columna col-12 col-md-6">
+            <h2>¿QUIENES SOMOS?</h2>
+            <p>Somos un laboratorio comprometido con la excelencia y la precisión diagnóstica. Nuestro equipo de profesionales altamente capacitados utiliza tecnología de vanguardia para ofrecer resultados confiables y oportunos. Nos enfocamos en brindar un servicio personalizado, garantizando la satisfacción y confianza de nuestros pacientes en su salud.</p>
+        </div>
+        <div class="columna col-12 col-md-6">
+            <img src="images/personal.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+<!--main-te puede interesar-->
+<div class="container text-center padding40 main__interes">
+    <div class="row">
+      <div class="main__titulo col-12">
+        <h3>Te puede interesar</h3>
+        <p>Nuestro laboratorio es un espacio dinámico y en constante evolución. Nos mantenemos actualizados mediante la incorporación continua de nuevas tecnologías y metodologías. Esto nos permite ofrecer resultados precisos y eficientes, mantenernos en nuevas investigaciones y proporcionar soluciones innovadoras a nuestros clientes.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+       <img class="interes__img" src="images/embarazo.jpg" alt="">
+       <h3>Control de embarazo</h3>
+       <p>Los controles de sangre durante el embarazo son importantes para monitorear la salud de la madre y el bebé, identificar posibles complicaciones, detectar anomalías genéticas y prevenir riesgos para garantizar un embarazo saludable y seguro.</p>
+      </div>
+      <div class="col-sm-12 col-md-4">
+       <img class="interes__img" src="images/dengue.jpg" alt=""> 
+       <h3>PCR de dengue</h3>
+       <p>El PCR (Reacción en Cadena de la Polimerasa) para el dengue es una técnica que detecta y amplifica el material genético del virus del dengue en una muestra de sangre, permitiendo así su identificación y diagnóstico preciso.</p>
+      </div>
+      <div class="col-sm-12 col-md-4">
+       <img class="interes__img" src="images/celiaqia.jpg" alt=""> 
+       <h3>Estudios de celiaquia</h3>
+       <p>Hacerse estudios de sangre para diagnosticar la enfermedad celíaca es importante porque permite identificar anticuerpos específicos relacionados con la enfermedad, lo que ayuda a confirmar el diagnóstico y adoptar una dieta libre de gluten para evitar complicaciones y mejorar la calidad de vida.</p>
+      </div>
+    </div>
+ </div>
+</body>
+
 </html>
