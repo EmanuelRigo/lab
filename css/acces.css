@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.acces {
+  background-color: #97d4f3;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 800px;
+}
+
+.patient-form {
+  max-width: 800px;
+  padding: 40px;
+  background-color: #97d4f3;
+  border-radius: 10px;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.patient-form__btn {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.analisis-container {
+  background-color: #97d4f3;
+  min-height: 800px;
+  padding: 40px;
+}
+
+.margin40 {
+  margin: 40px;
+}
