@@ -23,7 +23,7 @@
   </head>
   <body>
     <!--acces-->
-    <div class="container acces">
+    <div class="container acces d-none">
       <h1>Bienvenido al sistema de laboratorio</h1>
 
       <form>
@@ -138,8 +138,8 @@
     </div>
 
     <!--analisis-->
-    <div class="container text-center analisis-container d-none">
-      <div class="row row-cols-4">
+    <div class="container text-center analisis-container">
+      <div id="analisis-container" class="row row-cols-4">
         <div class="col-sm-6 col-md-3">
           <div class="card" style="width: 18rem">
             <img src="..." class="card-img-top" alt="..." />
@@ -162,6 +162,11 @@
           </div>
         </div>
       </div>
+      <button type="button" class="btn-analisis-enviar btn btn-success">
+        Finalizar
+      </button>
     </div>
+
+    <script src="js/script.js"></script>
   </body>
 </html>

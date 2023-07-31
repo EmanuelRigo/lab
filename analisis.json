@@ -1,0 +1,74 @@
+[
+  {
+    "nombre": "Orina completa",
+    "precio": 1400,
+    "tiempo": 1,
+    "id": 1
+  },
+  {
+    "nombre": "Urocultivo",
+    "precio": 1600,
+    "tiempo": 7,
+    "id": 2
+  },
+  {
+    "nombre": "Hemograma",
+    "precio": 1200,
+    "tiempo": 1,
+    "id": 3
+  },
+  {
+    "nombre": "Hepatograma",
+    "precio": 1700,
+    "tiempo": 4,
+    "id": 4
+  },
+  {
+    "nombre": "Ionograma",
+    "precio": 1100,
+    "tiempo": 5,
+    "id": 5
+  },
+  {
+    "nombre": "Perfil Tiroideo",
+    "precio": 2200,
+    "tiempo": 7,
+    "id": 6
+  },
+  {
+    "nombre": "Serologia Completa",
+    "precio": 2100,
+    "tiempo": 4,
+    "id": 7
+  },
+  {
+    "nombre": "Coagulograma",
+    "precio": 1300,
+    "tiempo": 1,
+    "id": 8
+  },
+  {
+    "nombre": "Vitaminas",
+    "precio": 10000,
+    "tiempo": 15,
+    "id": 9
+  },
+  {
+    "nombre": "Micologico",
+    "precio": 7000,
+    "tiempo": 30,
+    "id": 10
+  },
+  {
+    "nombre": "Creatinina",
+    "precio": 1500,
+    "tiempo": 3,
+    "id": 11
+  },
+  {
+    "nombre": "Glucosa",
+    "precio": 2000,
+    "tiempo": 3,
+    "id": 12
+  }
+]

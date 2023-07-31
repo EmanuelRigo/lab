@@ -39,8 +39,26 @@ body {
   background-color: #97d4f3;
   min-height: 800px;
   padding: 40px;
+  border-radius: 10px;
 }
 
+.tarjeta {
+  width: 200px;
+  text-align: center;
+  margin: 10px 0 10px 0;
+  height: 226px;
+}
+
+.card-body {
+  height: 50px;
+}
+
+.btn-analisis-enviar {
+  margin-top: 20px;
+  width: 500px;
+  font-size: 30px;
+  height: 80px;
+}
 .margin40 {
   margin: 40px;
 }
