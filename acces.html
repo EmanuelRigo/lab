@@ -23,16 +23,15 @@
   </head>
   <body>
     <!--acces-->
-    <div class="container acces d-none">
+    <div class="container acces">
       <h1>Bienvenido al sistema de laboratorio</h1>
-
       <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Usuario</label>
           <input
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
+            id="accesInputEmail"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" class="form-text">
@@ -43,19 +42,19 @@
           <label for="exampleInputPassword1" class="form-label"
             >Contraseña</label
           >
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
+          <input type="password" class="form-control" id="accesInputPassword" />
         </div>
         <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="accesCheckSession"
+          />
           <label class="form-check-label" for="exampleCheck1"
-            >Check me out</label
+            >Mantener sesión</label
           >
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Acceder</button>
       </form>
     </div>
 
@@ -138,30 +137,8 @@
     </div>
 
     <!--analisis-->
-    <div class="container text-center analisis-container">
-      <div id="analisis-container" class="row row-cols-4">
-        <div class="col-sm-6 col-md-3">
-          <div class="card" style="width: 18rem">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="container text-center analisis-container d-none">
+      <div id="analisis-container" class="row row-cols-4"></div>
       <button type="button" class="btn-analisis-enviar btn btn-success">
         Finalizar
       </button>
