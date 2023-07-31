@@ -1,6 +1,13 @@
 const accesInputEmail = document.getElementById("accesInputEmail")
 const accesInputPassword = document.getElementById("accesInputPassword")
 const accesCheckSession = document.getElementById("accesCheckSesion")
+const accesBtn = document.getElementById("accesBtn")
+
+const usersDB = [{
+  "nombre-usuario": "maira.lab",
+  "apellido": "lopez",
+  "password": "8787",
+}]
 
 
 const analisisContainer = document.getElementById("analisis-container")
@@ -11,8 +18,24 @@ function hola() {
   alert("hola")
 }
 
-accesInputEmail.addEventListener("click", hola)
-accesInputPassword.addEventListener("click", hola)
+
+
+function validarUsuario(usersDB, user, pass) {
+  let encontrado = usersDB.find((usersDB) => usersDB.nombre - usuario == user)
+
+  if (typeof encontrado == "undefined") {
+    return false;
+  } else {
+    if (encontrado.password != pass) {
+      return false
+    } else {
+      return encontrado
+    }
+  }
+
+  console.log(hola)
+
+}
 
 function cardsAnalisis(array, container) {
   container.innerHTML = "";
