@@ -1,11 +1,18 @@
+const accesInputEmail = document.getElementById("accesInputEmail")
+const accesInputPassword = document.getElementById("accesInputPassword")
+const accesCheckSession = document.getElementById("accesCheckSesion")
+
+
 const analisisContainer = document.getElementById("analisis-container")
-console.log(analisisContainer)
+
+
 
 function hola() {
   alert("hola")
 }
 
-analisisContainer.addEventListener("click", hola)
+accesInputEmail.addEventListener("click", hola)
+accesInputPassword.addEventListener("click", hola)
 
 function cardsAnalisis(array, container) {
   container.innerHTML = "";
@@ -29,9 +36,7 @@ function cardsAnalisis(array, container) {
   </div>`
     container.append(card);
   }
-
 }
-
 
 
 const urlArchivoJSON = new Request("analisis.json");
@@ -46,11 +51,7 @@ fetch(urlArchivoJSON)
   .then(data => {
     analisis = analisis.concat(data);
     cardsAnalisis(analisis, analisisContainer)
-    console.log(analisis)
   })
   .catch(error => {
     console.error('Error:', error);
   });
-
-
-console.log(analisis)
