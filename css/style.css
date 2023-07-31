@@ -80,6 +80,9 @@ footer {
 .margin40 {
   margin: 40px;
 }
+.border{
+  border-right: 1px solid #333 ;
+}
 
 @media screen and (max-width: 775px) {
   .contacto {
