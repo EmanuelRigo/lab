@@ -1,5 +1,6 @@
 body {
   background-color: #dedede;
+  
 }
 
 header h1 {
@@ -12,6 +13,33 @@ header hr {
   color: #333;
   width: 80%;
 }
+
+.nav-link{
+  margin: 10px;
+}
+
+.navbar-lab{
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.border-lab{
+  
+  border-right: 1px solid  rgba(var(--bs-emphasis-color-rgb), 0.65);;
+}
+
+.fa-solid{
+  font-size: 20px;
+  margin: 5px;
+}
+
+.acceso-lab{
+  font-size: 20px;
+  margin-right: 10px;
+  color:  rgba(var(--bs-emphasis-color-rgb), 0.65);;
+  text-decoration: none;
+}
+
 
 .carousel-item img {
   border-radius: 50px;
@@ -80,9 +108,8 @@ footer {
 .margin40 {
   margin: 40px;
 }
-.border{
-  border-right: 1px solid #333 ;
-}
+
+
 
 @media screen and (max-width: 775px) {
   .contacto {
