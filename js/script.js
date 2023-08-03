@@ -73,6 +73,18 @@ accesBtn.addEventListener('click', (e) => {
 )
 
 
+function recuperarUsuario(storage) {
+  let usuarioStorage = JSON.parse(storage.getItem("usuario"));
+  return usuarioStorage;
+}
+
+function estaLogueado(usuario) {
+  if (usuario) {
+    cambiarEstado(acces, patientForm);
+  }
+}
+
+
 function cardsAnalisis(array, container) {
   container.innerHTML = "";
   for (item of array) {
@@ -114,3 +126,7 @@ fetch(urlArchivoJSON)
   .catch(error => {
     console.error('Error:', error);
   });
+
+
+
+window.onload = () => estaLogueado(recuperarUsuario(localStorage));
