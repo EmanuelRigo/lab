@@ -23,13 +23,13 @@
   </head>
   <body>
     <!--acces-->
-    <div class="container acces">
+    <div id="acces" class="container acces">
       <h1>Bienvenido al sistema de laboratorio</h1>
       <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Usuario</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="accesInputEmail"
             aria-describedby="emailHelp"
@@ -61,44 +61,39 @@
     </div>
 
     <!--formulario-paciente-->
-    <div class="container patient-form d-none">
+    <div id="patientForm" class="container patient-form d-none">
       <h2>Bienvenido undefined</h2>
       <h2>por favor ingrese los datos del paciente</h2>
       <form class="row g-3 needs-validation margin40" novalidate>
         <div class="col-md-6">
-          <label for="validationCustom01" class="form-label">First name</label>
+          <label for="validationCustom01" class="form-label"
+            >Nombre completo</label
+          >
           <input
             type="text"
             class="form-control"
             id="validationCustom01"
-            value="Mark"
             required
           />
           <div class="valid-feedback">Looks good!</div>
-          <label for="validationCustom02" class="form-label">Last name</label>
+          <label for="validationCustom02" class="form-label">Apellido</label>
           <input
             type="text"
             class="form-control"
             id="validationCustom02"
-            value="Otto"
             required
           />
           <div class="valid-feedback">Looks good!</div>
 
-          <label for="validationCustomUsername" class="form-label"
-            >Username</label
-          >
-          <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustomUsername"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <div class="invalid-feedback">Please choose a username.</div>
-          </div>
+          <label for="validationCustomUsername" class="form-label">DNI</label>
+          <input
+            type="number"
+            class="form-control"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            required
+          />
+          <div class="invalid-feedback">Please choose a username.</div>
         </div>
         <div class="col-md-6">
           <label for="validationCustom03" class="form-label">City</label>

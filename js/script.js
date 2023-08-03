@@ -1,10 +1,13 @@
 const accesInputEmail = document.getElementById("accesInputEmail")
 const accesInputPassword = document.getElementById("accesInputPassword")
-const accesCheckSession = document.getElementById("accesCheckSesion")
+const accesCheckSession = document.getElementById("accesCheckSession")
 const accesBtn = document.getElementById("accesBtn")
+const acces = document.getElementById("acces")
+const patientForm = document.getElementById("patientForm")
 
 const usersDB = [{
   "nombreUsuario": "maira.lab",
+  "nombre": "maira",
   "apellido": "lopez",
   "password": "8787",
 }]
@@ -15,6 +18,11 @@ function hola() {
   console.log("hola")
 }
 
+function cambiarEstado(activate,
+  deactivate) {
+  activate.classList.toggle("d-none");
+  deactivate.classList.toggle("d-none");
+}
 
 function validarUsuario(array, user, pass) {
   let encontrado = array.find((array) => array.nombreUsuario == user)
@@ -23,23 +31,47 @@ function validarUsuario(array, user, pass) {
     return false;
   } else {
     if (encontrado.password != pass) {
-
       return false
     } else {
-
       return encontrado
     }
   }
 }
 
-console.log(usersDB)
+function guardarUsuario(datos, storage) {
+  const userStorage = {
+    username: datos.nombreUsuario,
+    name: datos.nombre,
+    surname: datos.apellido,
+    password: datos.password
+  }
+
+  storage.setItem("usuario", JSON.stringify(userStorage))
+}
 
 accesBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  let data = validarUsuario(usersDB, accesInputEmail.value, accesInputPassword.value)
-  console.log(data)
+  if (!accesInputEmail.value || !accesInputPassword.value) {
+    alert("por favor llene los campos")
+  } else {
+    let data = validarUsuario(usersDB, accesInputEmail.value, accesInputPassword.value)
+    console.log(data)
+
+    if (!data) { alert("contraseña o mail incorrecto") } else {
+      if (accesCheckSession.checked) {
+        alert("ingreso exitoso")
+        cambiarEstado(acces, patientForm)
+        guardarUsuario(data, localStorage)
+      } else {
+        alert("ingreso exitoso")
+        cambiarEstado(acces, patientForm)
+        guardarUsuario(data, sessionStorage)
+      }
+    }
+  }
 }
 )
+
 
 function cardsAnalisis(array, container) {
   container.innerHTML = "";
