@@ -20,6 +20,8 @@ const analisysContainer = document.getElementById("analisysContainer")
 const analisysBtnFinish = document.getElementById("analysisBtnFinish")
 
 
+const talon = document.getElementById("talon")
+
 
 const usersDB = [{
   "nombreUsuario": "maira.lab",
@@ -126,6 +128,7 @@ function sumarPaciente() {
     )
   )
   console.log(patientDB[0])
+  cambiarEstado(analisys, talon)
 }
 
 patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); cambiarEstado(patientForm, analisys) })
@@ -148,6 +151,7 @@ fetch(urlArchivoJSON)
   .catch(error => {
     console.error('Error:', error);
   });
+
 let analisisSumados = []
 
 function cardsAnalisis(array, container) {

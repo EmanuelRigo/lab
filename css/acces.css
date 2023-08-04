@@ -63,6 +63,20 @@ body {
   font-size: 30px;
   height: 80px;
 }
+
+.talon {
+  background-color: #cfcfcf;
+  border-radius: 10px;
+  padding: 40px;
+  width: 900px;
+  height: 900px;
+}
+
+.talon-table {
+  border-radius: 30px;
+  background-color: red;
+}
+
 .margin40 {
   margin: 40px;
 }
