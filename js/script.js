@@ -3,7 +3,19 @@ const accesInputPassword = document.getElementById("accesInputPassword")
 const accesCheckSession = document.getElementById("accesCheckSession")
 const accesBtn = document.getElementById("accesBtn")
 const acces = document.getElementById("acces")
+
+
 const patientForm = document.getElementById("patientForm")
+const patientFormInputName = document.getElementById("patientFormInputName")
+const patientFormInputSurame = document.getElementById("patientFormInputSurname")
+const patientFormInputDni = document.getElementById("patientFormInputDni")
+const patientFormInputMail = document.getElementById("patientFormInputMail")
+const patientFormInputGender = document.getElementById("patientFormInputGender")
+const patientFormInputAge = document.getElementById("patientFormInputAge")
+const patientFormBtnNext = document.getElementById("patientFormBtnNext")
+
+
+const analisisContainer = document.getElementById("analisis-container")
 
 const usersDB = [{
   "nombreUsuario": "maira.lab",
@@ -12,11 +24,6 @@ const usersDB = [{
   "password": "8787",
 }]
 
-const analisisContainer = document.getElementById("analisis-container")
-
-function hola() {
-  console.log("hola")
-}
 
 function cambiarEstado(activate,
   deactivate) {
@@ -84,6 +91,41 @@ function estaLogueado(usuario) {
   }
 }
 
+
+//////Funciones de Pacientes///////
+
+
+let patientDB = [];
+
+class Patient {
+  constructor(name, surname, dni, email, gender, age, analysis) {
+    this.name = name;
+    this.surname = surname;
+    this.dni = dni;
+    this.email = email;
+    this.gender = gender;
+    this.age = age;
+    this.analysis = analysis
+  }
+}
+
+function sumarPaciente() {
+  patientDB.push(
+    new Patient(
+      patientFormInputName.value,
+      patientFormInputSurame.value,
+      patientFormInputDni.value,
+      patientFormInputMail.value,
+      patientFormInputGender.value,
+      patientFormInputAge.value
+    )
+  )
+  console.log(patientDB[0])
+}
+
+patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); sumarPaciente() })
+
+/////////Funciones de Analisis/////////
 
 function cardsAnalisis(array, container) {
   container.innerHTML = "";

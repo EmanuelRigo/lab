@@ -66,68 +66,70 @@
       <h2>por favor ingrese los datos del paciente</h2>
       <form class="row g-3 needs-validation margin40" novalidate>
         <div class="col-md-6">
-          <label for="validationCustom01" class="form-label"
+          <label for="patientFormInputName" class="form-label"
             >Nombre completo</label
           >
           <input
             type="text"
-            class="form-control"
-            id="validationCustom01"
+            class="form-control patient-form_input"
+            id="patientFormInputName"
             required
           />
-          <div class="valid-feedback">Looks good!</div>
-          <label for="validationCustom02" class="form-label">Apellido</label>
+          <label for="patientFormInputSurname" class="form-label"
+            >Apellido</label
+          >
           <input
             type="text"
-            class="form-control"
-            id="validationCustom02"
+            class="form-control patient-form_input"
+            id="patientFormInputSurname"
             required
           />
-          <div class="valid-feedback">Looks good!</div>
-
-          <label for="validationCustomUsername" class="form-label">DNI</label>
+          <label for="patientFormInputDni" class="form-label">DNI</label>
           <input
             type="number"
-            class="form-control"
-            id="validationCustomUsername"
+            class="form-control patient-form_input"
+            id="patientFormInputDni"
             aria-describedby="inputGroupPrepend"
             required
           />
-          <div class="invalid-feedback">Please choose a username.</div>
         </div>
         <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">City</label>
+          <label for="patientFormInputMail" class="form-label">Email</label>
           <input
-            type="text"
-            class="form-control"
-            id="validationCustom03"
+            type="email"
+            class="form-control patient-form_input"
+            id="patientFormInputMail"
             required
           />
-          <div class="invalid-feedback">Please provide a valid city.</div>
-
           <div class="row">
             <div class="col-md-6">
-              <label for="validationCustom04" class="form-label">State</label>
-              <select class="form-select" id="validationCustom04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
+              <label for="patientFormInputGender" class="form-label"
+                >Genero</label
+              >
+              <select class="form-select" id="patientFormInputGender" required>
+                <option selected disabled value="">defecto...</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
               </select>
               <div class="invalid-feedback">Please select a valid state.</div>
             </div>
             <div class="col-md-6">
-              <label for="validationCustom05" class="form-label">Zip</label>
+              <label for="patientFormInputAge" class="form-label">Edad</label>
               <input
-                type="text"
-                class="form-control"
-                id="validationCustom05"
+                type="number"
+                class="form-control patient-form_input"
+                id="patientFormInputAge"
                 required
               />
-              <div class="invalid-feedback">Please provide a valid zip.</div>
             </div>
           </div>
 
-          <button class="patient-form__btn btn btn-primary" type="submit">
-            Submit form
+          <button
+            class="patient-form__btn btn btn-primary"
+            type="submit"
+            id="patientFormBtnNext"
+          >
+            Siguiente
           </button>
         </div>
       </form>

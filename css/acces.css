@@ -35,6 +35,10 @@ body {
   margin-top: 32px;
 }
 
+.patient-form_input {
+  margin-bottom: 10px;
+}
+
 .analisis-container {
   background-color: #97d4f3;
   min-height: 800px;
