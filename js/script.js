@@ -15,7 +15,11 @@ const patientFormInputAge = document.getElementById("patientFormInputAge")
 const patientFormBtnNext = document.getElementById("patientFormBtnNext")
 
 
-const analisisContainer = document.getElementById("analisis-container")
+const analisys = document.getElementById("analisys")
+const analisysContainer = document.getElementById("analisysContainer")
+const analisysBtnFinish = document.getElementById("analysisBtnFinish")
+
+
 
 const usersDB = [{
   "nombreUsuario": "maira.lab",
@@ -117,22 +121,41 @@ function sumarPaciente() {
       patientFormInputDni.value,
       patientFormInputMail.value,
       patientFormInputGender.value,
-      patientFormInputAge.value
+      patientFormInputAge.value,
+      analisisSumados
     )
   )
   console.log(patientDB[0])
 }
 
-patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); sumarPaciente() })
+patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); cambiarEstado(patientForm, analisys) })
 
 /////////Funciones de Analisis/////////
+
+const urlArchivoJSON = new Request("analisis.json");
+let analisisDB = []
+fetch(urlArchivoJSON)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Error al conseguir los datos.');
+    }
+    return response.json();
+  })
+  .then(data => {
+    analisisDB = analisisDB.concat(data);
+    cardsAnalisis(analisisDB, analisysContainer)
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+let analisisSumados = []
 
 function cardsAnalisis(array, container) {
   container.innerHTML = "";
   for (item of array) {
     let card = document.createElement("div");
     card.className = "col d-flex justify-content-center";
-    card.id = item.id;
+    card.id = item.nombre;
     card.innerHTML = `
     <div class="card tarjeta">
       <div class="card-body">
@@ -143,32 +166,43 @@ function cardsAnalisis(array, container) {
       <li class="list-group-item">Demora: ${item.tiempo} dias </li>
     </ul>
     <div class="card-body">
-    <button type="button" class="btn btn-info">Agregar</button>
-    <button type="button" class="btn btn-warning">Quitar</button>
+    <button type="button" data-filter="${item.nombre}" class="btn btn-info analisysBtnAdd">Agregar</button>
+    <button type="button" class="btn btn-warning analisysBtnRemove">Quitar</button>
     </div>
   </div>`
     container.append(card);
   }
+
+  /********////////pasar a funciones asincronas////////******/
+
+  const analisysBtnAdd = document.querySelectorAll(".analisysBtnAdd")
+  const analisysCard = document.querySelectorAll(".col")
+
+  analisysBtnAdd.forEach((btn) => {
+    btn.addEventListener(("click"), () => { sumarAnalisis(btn.dataset.filter) })
+  })
+
+
+  function sumarAnalisis(analisis) {
+    if (analisis.dataset === analisisDB.nombre) {
+      function isTrue(estudio) {
+        return estudio.nombre === analisis;
+      }
+
+      analisisSumados.push(analisisDB.find(isTrue))
+    } else {
+      return console.log("chau")
+    }
+
+    console.log(analisisSumados)
+  }
+
+  ///////////////////////////////////////////////
 }
 
 
-const urlArchivoJSON = new Request("analisis.json");
-let analisis = []
-fetch(urlArchivoJSON)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error al conseguir los datos.');
-    }
-    return response.json();
-  })
-  .then(data => {
-    analisis = analisis.concat(data);
-    cardsAnalisis(analisis, analisisContainer)
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
 
+analisysBtnFinish.addEventListener("click", sumarPaciente)
 
 
 window.onload = () => estaLogueado(recuperarUsuario(localStorage));
