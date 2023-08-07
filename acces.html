@@ -61,94 +61,111 @@
     </div>
 
     <!--formulario-paciente-->
-    <div id="patientForm" class="container patient-form d-none">
-      <h2>Bienvenido undefined</h2>
-      <h2>por favor ingrese los datos del paciente</h2>
-      <form class="row g-3 needs-validation margin40" novalidate>
-        <div class="col-md-6">
-          <label for="patientFormInputName" class="form-label"
-            >Nombre completo</label
-          >
-          <input
-            type="text"
-            class="form-control patient-form_input"
-            id="patientFormInputName"
-            required
-          />
-          <label for="patientFormInputSurname" class="form-label"
-            >Apellido</label
-          >
-          <input
-            type="text"
-            class="form-control patient-form_input"
-            id="patientFormInputSurname"
-            required
-          />
-          <label for="patientFormInputDni" class="form-label">DNI</label>
-          <input
-            type="number"
-            class="form-control patient-form_input"
-            id="patientFormInputDni"
-            aria-describedby="inputGroupPrepend"
-            required
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="patientFormInputMail" class="form-label">Tel</label>
-          <input
-            type="number"
-            class="form-control patient-form_input"
-            id="patientFormInputMail"
-            required
-          />
-          <div class="row">
-            <div class="col-md-6">
-              <label for="patientFormInputGender" class="form-label"
-                >Genero</label
-              >
-              <select class="form-select" id="patientFormInputGender" required>
-                <option selected disabled value="">defecto...</option>
-                <option>Masculino</option>
-                <option>Femenino</option>
-              </select>
-              <div class="invalid-feedback">Please select a valid state.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="patientFormInputAge" class="form-label">Edad</label>
-              <input
-                type="number"
-                class="form-control patient-form_input"
-                id="patientFormInputAge"
-                required
-              />
-            </div>
+    <!--formulario-paciente-->
+    <div id="formPatientAnalisisTalon" class="d-none">
+      <div id="patientForm" class="container patient-form">
+        <h2 id="patientFormWelcome"></h2>
+        <h3>por favor ingrese los datos del paciente</h3>
+        <form class="row g-3 needs-validation margin40" novalidate>
+          <div class="col-md-6">
+            <label for="patientFormInputName" class="form-label"
+              >Nombre completo</label
+            >
+            <input
+              type="text"
+              class="form-control patient-form_input"
+              id="patientFormInputName"
+              required
+            />
+            <label for="patientFormInputSurname" class="form-label"
+              >Apellido</label
+            >
+            <input
+              type="text"
+              class="form-control patient-form_input"
+              id="patientFormInputSurname"
+              required
+            />
+            <label for="patientFormInputDni" class="form-label">DNI</label>
+            <input
+              type="number"
+              class="form-control patient-form_input"
+              id="patientFormInputDni"
+              aria-describedby="inputGroupPrepend"
+              required
+            />
           </div>
+          <div class="col-md-6">
+            <label for="patientFormInputMail" class="form-label">Tel</label>
+            <input
+              type="number"
+              class="form-control patient-form_input"
+              id="patientFormInputMail"
+              required
+            />
+            <div class="row">
+              <div class="col-md-6">
+                <label for="patientFormInputGender" class="form-label"
+                  >Genero</label
+                >
+                <select
+                  class="form-select"
+                  id="patientFormInputGender"
+                  required
+                >
+                  <option selected disabled value="">defecto...</option>
+                  <option>Masculino</option>
+                  <option>Femenino</option>
+                </select>
+                <div class="invalid-feedback">Please select a valid state.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="patientFormInputAge" class="form-label">Edad</label>
+                <input
+                  type="number"
+                  class="form-control patient-form_input"
+                  id="patientFormInputAge"
+                  required
+                />
+              </div>
+            </div>
 
-          <button
-            class="patient-form__btn btn btn-primary"
-            type="submit"
-            id="patientFormBtnNext"
-          >
-            Siguiente
-          </button>
-        </div>
-      </form>
-    </div>
+            <button
+              class="patient-form__btn btn btn-primary"
+              type="submit"
+              id="patientFormBtnNext"
+            >
+              Siguiente
+            </button>
+          </div>
+        </form>
+      </div>
 
-    <!--analisis-->
-    <div id="analisys" class="container text-center analisis-container d-none">
-      <div id="analisysContainer" class="row row-cols-4"></div>
-      <button
-        id="analysisBtnFinish"
-        type="button"
-        class="btn-analisis-enviar btn btn-success"
+      <!--analisis-->
+      <div
+        id="analisys"
+        class="container text-center analisis-container d-none"
       >
-        Finalizar
+        <div id="analisysContainer" class="row row-cols-4"></div>
+        <button
+          id="analysisBtnFinish"
+          type="button"
+          class="btn-analisis-enviar btn btn-success"
+        >
+          Finalizar
+        </button>
+      </div>
+
+      <!--talon-->
+      <div id="talon" class="container talon d-none"></div>
+      <button
+        class="patient-form__btn btn btn-primary"
+        type="submit"
+        id="signOff"
+      >
+        cerrar sesion
       </button>
     </div>
-
-    <!--talon-->
-    <div id="talon" class="container talon d-none"></div>
 
     <script src="js/script.js"></script>
   </body>

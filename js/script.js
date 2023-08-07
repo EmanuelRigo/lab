@@ -3,6 +3,7 @@ const accesInputPassword = document.getElementById("accesInputPassword")
 const accesCheckSession = document.getElementById("accesCheckSession")
 const accesBtn = document.getElementById("accesBtn")
 const acces = document.getElementById("acces")
+const formPatientAnalisisTalon = document.getElementById("formPatientAnalisisTalon")
 
 
 const patientForm = document.getElementById("patientForm")
@@ -13,6 +14,9 @@ const patientFormInputMail = document.getElementById("patientFormInputMail")
 const patientFormInputGender = document.getElementById("patientFormInputGender")
 const patientFormInputAge = document.getElementById("patientFormInputAge")
 const patientFormBtnNext = document.getElementById("patientFormBtnNext")
+const patientFormWelcome = document.getElementById("patientFormWelcome")
+
+const signOff = document.getElementById("signOff")
 
 
 const analisys = document.getElementById("analisys")
@@ -25,7 +29,7 @@ const talon = document.getElementById("talon")
 
 const usersDB = [{
   "nombreUsuario": "maira.lab",
-  "nombre": "maira",
+  "nombre": "Maira",
   "apellido": "lopez",
   "password": "8787",
 }]
@@ -72,12 +76,14 @@ accesBtn.addEventListener('click', (e) => {
     if (!data) { alert("contraseña o mail incorrecto") } else {
       if (accesCheckSession.checked) {
         alert("ingreso exitoso")
-        cambiarEstado(acces, patientForm)
+        cambiarEstado(acces, formPatientAnalisisTalon)
         guardarUsuario(data, localStorage)
+        saludar(recuperarUsuario(localStorage).name)
       } else {
         alert("ingreso exitoso")
-        cambiarEstado(acces, patientForm)
+        cambiarEstado(acces, formPatientAnalisisTalon)
         guardarUsuario(data, sessionStorage)
+        saludar(recuperarUsuario(sessionStorage).name)
       }
     }
   }
@@ -92,7 +98,8 @@ function recuperarUsuario(storage) {
 
 function estaLogueado(usuario) {
   if (usuario) {
-    cambiarEstado(acces, patientForm);
+    cambiarEstado(acces, formPatientAnalisisTalon);
+    saludar(recuperarUsuario(localStorage).name)
   }
 }
 
@@ -112,6 +119,10 @@ class Patient {
     this.age = age;
     this.analysis = analysis
   }
+}
+
+function saludar(usuario) {
+  patientFormWelcome.innerHTML = `Bienvenido ${usuario}`
 }
 
 function sumarPaciente() {
@@ -244,7 +255,16 @@ function talonPaciente(container) {
   }
 }
 
+signOff.addEventListener("click", cerrarSession)
 
+function cerrarSession() {
+  localStorage.clear();
+  sessionStorage.clear();
+  patientForm.classList.remove("d-none")
+  analisys.classList.add("d-none")
+  talon.classList.add("d-none")
+  cambiarEstado(acces, formPatientAnalisisTalon)
+}
 
 analisysBtnFinish.addEventListener("click", sumarPaciente)
 
