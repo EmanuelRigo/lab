@@ -68,7 +68,6 @@ accesBtn.addEventListener('click', (e) => {
     alert("por favor llene los campos")
   } else {
     let data = validarUsuario(usersDB, accesInputEmail.value, accesInputPassword.value)
-    console.log(data)
 
     if (!data) { alert("contraseña o mail incorrecto") } else {
       if (accesCheckSession.checked) {
@@ -104,11 +103,11 @@ function estaLogueado(usuario) {
 let patientDB = [];
 
 class Patient {
-  constructor(name, surname, dni, email, gender, age, analysis) {
+  constructor(name, surname, dni, tel, gender, age, analysis) {
     this.name = name;
     this.surname = surname;
     this.dni = dni;
-    this.email = email;
+    this.tel = tel;
     this.gender = gender;
     this.age = age;
     this.analysis = analysis
@@ -127,8 +126,8 @@ function sumarPaciente() {
       analisisSumados
     )
   )
-  console.log(patientDB[0])
   cambiarEstado(analisys, talon)
+  talonPaciente(talon)
 }
 
 patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); cambiarEstado(patientForm, analisys) })
@@ -198,10 +197,51 @@ function cardsAnalisis(array, container) {
       return console.log("chau")
     }
 
-    console.log(analisisSumados)
   }
 
   ///////////////////////////////////////////////
+}
+
+/////////Funciones de Talon/////////
+
+function talonPaciente(container) {
+  container.innerHTML = ''
+  container.innerHTML = `<div class="talon_card card mb-3">
+  <div class="card-header bg-transparent border-success">
+    identificador de analisis #${patientDB.length + patientDB[0].dni}
+  </div>
+  <div class="talon_card-body">
+    <h5 class="card-title">${patientDB[0].name + ' ' + patientDB[0].surname}</h5>
+    <p>genero: ${patientDB[0].gender} </p>
+    <p>Edad: ${patientDB[0].age}</p>
+    <p class="card-text">dni: ${patientDB[0].dni}</p>
+    <p>tel: ${patientDB[0].tel}</p>
+  </div>
+  <div class="card-footer bg-transparent border-success">
+    <table class="talon-table table caption-top">
+      <thead >
+        <tr>
+          <th scope="col">Analisis</th>
+          <th scope="col">Dias</th>
+          <th scope="col">Precio</th>
+        </tr>
+      </thead>
+      <tbody id="talon__tbody">
+      </tbody>
+    </table>
+  </div>
+</div>`
+
+  for (item of patientDB[0].analysis) {
+    const talonThead = document.getElementById("talon__tbody")
+    let trAnalysis = document.createElement("tr")
+
+    trAnalysis.innerHTML = `<td>${item.nombre}</td>
+    <td>${item.tiempo}</td>
+    <td>${item.precio}</td>`
+
+    talonThead.append(trAnalysis)
+  }
 }
 
 

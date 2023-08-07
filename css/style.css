@@ -1,6 +1,5 @@
 body {
   background-color: #dedede;
-  
 }
 
 header h1 {
@@ -14,33 +13,32 @@ header hr {
   width: 80%;
 }
 
-.nav-link{
+.nav-link {
   margin: 10px;
 }
 
-.navbar-lab{
+.navbar-lab {
   padding-top: 10px;
   font-size: 20px;
 }
 
-
-.fa-solid{
+.fa-solid {
   font-size: 20px;
   margin: 5px;
 }
 
-.ul-a:hover{
+.ul-a:hover {
   color: black;
 }
 
-.acceso-lab{
+.acceso-lab {
   font-size: 20px;
   margin-right: 10px;
-  color:  rgba(var(--bs-emphasis-color-rgb), 0.65);;
+  color: rgba(var(--bs-emphasis-color-rgb), 0.65);
   text-decoration: none;
 }
 
-.acceso-lab:hover{
+.acceso-lab:hover {
   color: black;
 }
 
@@ -86,7 +84,7 @@ header hr {
   margin: 40px;
 }
 
-.mapa{
+.mapa {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,8 +121,6 @@ footer {
 .margin40 {
   margin: 40px;
 }
-
-
 
 @media screen and (max-width: 775px) {
   .contacto {
