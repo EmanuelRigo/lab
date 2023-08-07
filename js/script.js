@@ -222,7 +222,7 @@ function talonPaciente(container) {
     identificador de analisis #${patientDB.length + patientDB[0].dni}
   </div>
   <div class="talon_card-body">
-    <h5 class="card-title">${patientDB[0].name + ' ' + patientDB[0].surname}</h5>
+    <h5 class="card-title">${patientDB[patientDB.length - 1].name + ' ' + patientDB[patientDB.length - 1].surname}</h5>
     <p>genero: ${patientDB[0].gender} </p>
     <p>Edad: ${patientDB[0].age}</p>
     <p class="card-text">dni: ${patientDB[0].dni}</p>
@@ -243,7 +243,7 @@ function talonPaciente(container) {
   </div>
 </div>`
 
-  for (item of patientDB[0].analysis) {
+  for (item of patientDB[patientDB.length - 1].analysis) {
     const talonThead = document.getElementById("talon__tbody")
     let trAnalysis = document.createElement("tr")
 
@@ -263,10 +263,15 @@ function cerrarSession() {
   patientForm.classList.remove("d-none")
   analisys.classList.add("d-none")
   talon.classList.add("d-none")
+  talon.innerHTML = ''
+  analisisSumados = []
   cambiarEstado(acces, formPatientAnalisisTalon)
+
 }
 
 analisysBtnFinish.addEventListener("click", sumarPaciente)
+
+console.log(patientDB)
 
 
 window.onload = () => estaLogueado(recuperarUsuario(localStorage));
