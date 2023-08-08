@@ -5,7 +5,7 @@ const accesBtn = document.getElementById("accesBtn")
 const acces = document.getElementById("acces")
 const formPatientAnalisisTalon = document.getElementById("formPatientAnalisisTalon")
 
-
+const patientFormContainer = document.getElementById("patientFormContainer")
 const patientForm = document.getElementById("patientForm")
 const patientFormInputName = document.getElementById("patientFormInputName")
 const patientFormInputSurame = document.getElementById("patientFormInputSurname")
@@ -22,9 +22,12 @@ const signOff = document.getElementById("signOff")
 const analisys = document.getElementById("analisys")
 const analisysContainer = document.getElementById("analisysContainer")
 const analisysBtnFinish = document.getElementById("analysisBtnFinish")
+const analysisBtnBack = document.getElementById("analysisBtnBack")
 
-
+const talonContainer = document.getElementById("talonContainer")
 const talon = document.getElementById("talon")
+const talonBtnAddPatient = document.getElementById("talonBtnAddPatient")
+
 
 
 const usersDB = [{
@@ -137,11 +140,11 @@ function sumarPaciente() {
       analisisSumados
     )
   )
-  cambiarEstado(analisys, talon)
+  cambiarEstado(analisys, talonContainer)
   talonPaciente(talon)
 }
 
-patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); cambiarEstado(patientForm, analisys) })
+patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); cambiarEstado(patientFormContainer, analisys) })
 
 /////////Funciones de Analisis/////////
 
@@ -186,6 +189,8 @@ function cardsAnalisis(array, container) {
   </div>`
     container.append(card);
   }
+
+  analysisBtnBack.addEventListener("click", () => { cambiarEstado(analisys, patientFormContainer) })
 
   /********////////pasar a funciones asincronas////////******/
 
@@ -255,12 +260,19 @@ function talonPaciente(container) {
   }
 }
 
+talonBtnAddPatient.addEventListener("click", () => {
+  analisisSumados = []
+  patientForm.reset();
+  cambiarEstado(talonContainer, patientFormContainer)
+  console.log(patientDB)
+})
+
 signOff.addEventListener("click", cerrarSession)
 
 function cerrarSession() {
   localStorage.clear();
   sessionStorage.clear();
-  patientForm.classList.remove("d-none")
+  patientFormContainer.classList.remove("d-none")
   analisys.classList.add("d-none")
   talon.classList.add("d-none")
   talon.innerHTML = ''

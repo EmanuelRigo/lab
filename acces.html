@@ -63,10 +63,14 @@
     <!--formulario-paciente-->
     <!--formulario-paciente-->
     <div id="formPatientAnalisisTalon" class="d-none">
-      <div id="patientForm" class="container patient-form">
+      <div id="patientFormContainer" class="container patient-form">
         <h2 id="patientFormWelcome"></h2>
         <h3>por favor ingrese los datos del paciente</h3>
-        <form class="row g-3 needs-validation margin40" novalidate>
+        <form
+          id="patientForm"
+          class="row g-3 needs-validation margin40"
+          novalidate
+        >
           <div class="col-md-6">
             <label for="patientFormInputName" class="form-label"
               >Nombre completo</label
@@ -148,6 +152,13 @@
       >
         <div id="analisysContainer" class="row row-cols-4"></div>
         <button
+          id="analysisBtnBack"
+          type="button"
+          class="btn-analisis-enviar btn btn-success"
+        >
+          volver
+        </button>
+        <button
           id="analysisBtnFinish"
           type="button"
           class="btn-analisis-enviar btn btn-success"
@@ -157,7 +168,17 @@
       </div>
 
       <!--talon-->
-      <div id="talon" class="container talon d-none"></div>
+      <div id="talonContainer" class="d-none">
+        <div id="talon" class="container talon"></div>
+        <button
+          class="patient-form__btn btn btn-primary"
+          type="submit"
+          id="talonBtnAddPatient"
+        >
+          Agregar nuevo paciente
+        </button>
+      </div>
+
       <button
         class="patient-form__btn btn btn-primary"
         type="submit"
