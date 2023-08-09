@@ -4,18 +4,22 @@
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   width: 100vw;
 }
 
-.acces {
+.second-body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radius-celeste {
   background-color: #97d4f3;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 40px;
-  max-width: 800px;
 }
 
 .patient-form {
@@ -31,7 +35,8 @@ body {
 }
 
 .patient-form__btn {
-  width: 100%;
+  min-width: 100%;
+
   margin-top: 32px;
 }
 
@@ -39,29 +44,36 @@ body {
   margin-bottom: 10px;
 }
 
-.analisis-container {
-  background-color: #97d4f3;
-  min-height: 800px;
-  padding: 40px;
-  border-radius: 10px;
+.analysis__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  grid-gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.analysis__btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .tarjeta {
-  width: 250px;
   text-align: center;
-  margin: 10px 0 10px 0;
-  height: 290px;
-}
-
-.card-body {
-  height: 50px;
+  box-sizing: border-box;
+  min-width: 100px;
+  max-width: 250px;
+  height: 200px;
+  background-color: red;
 }
 
 .btn-analisis-enviar {
-  margin-top: 20px;
-  width: 500px;
-  font-size: 30px;
-  height: 80px;
+  width: 100%;
+  font-size: 20px;
+  height: 48%;
+  margin: 20px;
 }
 
 .talon {

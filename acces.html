@@ -23,171 +23,295 @@
   </head>
   <body>
     <!--acces-->
-    <div id="acces" class="container acces">
-      <h1>Bienvenido al sistema de laboratorio</h1>
-      <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Usuario</label>
-          <input
-            type="text"
-            class="form-control"
-            id="accesInputEmail"
-            aria-describedby="emailHelp"
-          />
-          <div id="emailHelp" class="form-text">
-            El usuario es para el personal del laboratorio.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"
-            >Contraseña</label
-          >
-          <input type="password" class="form-control" id="accesInputPassword" />
-        </div>
-        <div class="mb-3 form-check">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="accesCheckSession"
-          />
-          <label class="form-check-label" for="exampleCheck1"
-            >Mantener sesión</label
-          >
-        </div>
-        <button id="accesBtn" type="submit" class="btn btn-primary">
-          Acceder
-        </button>
-      </form>
-    </div>
-
-    <!--formulario-paciente-->
-    <!--formulario-paciente-->
-    <div id="formPatientAnalisisTalon" class="d-none">
-      <div id="patientFormContainer" class="container patient-form">
-        <h2 id="patientFormWelcome"></h2>
-        <h3>por favor ingrese los datos del paciente</h3>
-        <form
-          id="patientForm"
-          class="row g-3 needs-validation margin40"
-          novalidate
-        >
-          <div class="col-md-6">
-            <label for="patientFormInputName" class="form-label"
-              >Nombre completo</label
-            >
+    <div class="second-body">
+      <div id="acces" class="radius-celeste col-md-6">
+        <h1>Bienvenido al sistema de laboratorio</h1>
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Usuario</label>
             <input
               type="text"
-              class="form-control patient-form_input"
-              id="patientFormInputName"
-              required
+              class="form-control"
+              id="accesInputEmail"
+              aria-describedby="emailHelp"
             />
-            <label for="patientFormInputSurname" class="form-label"
-              >Apellido</label
-            >
-            <input
-              type="text"
-              class="form-control patient-form_input"
-              id="patientFormInputSurname"
-              required
-            />
-            <label for="patientFormInputDni" class="form-label">DNI</label>
-            <input
-              type="number"
-              class="form-control patient-form_input"
-              id="patientFormInputDni"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-          </div>
-          <div class="col-md-6">
-            <label for="patientFormInputMail" class="form-label">Tel</label>
-            <input
-              type="number"
-              class="form-control patient-form_input"
-              id="patientFormInputMail"
-              required
-            />
-            <div class="row">
-              <div class="col-md-6">
-                <label for="patientFormInputGender" class="form-label"
-                  >Genero</label
-                >
-                <select
-                  class="form-select"
-                  id="patientFormInputGender"
-                  required
-                >
-                  <option selected disabled value="">defecto...</option>
-                  <option>Masculino</option>
-                  <option>Femenino</option>
-                </select>
-                <div class="invalid-feedback">Please select a valid state.</div>
-              </div>
-              <div class="col-md-6">
-                <label for="patientFormInputAge" class="form-label">Edad</label>
-                <input
-                  type="number"
-                  class="form-control patient-form_input"
-                  id="patientFormInputAge"
-                  required
-                />
-              </div>
+            <div id="emailHelp" class="form-text">
+              El usuario es para el personal del laboratorio.
             </div>
-
-            <button
-              class="patient-form__btn btn btn-primary"
-              type="submit"
-              id="patientFormBtnNext"
-            >
-              Siguiente
-            </button>
           </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="accesInputPassword"
+            />
+          </div>
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="accesCheckSession"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Mantener sesión</label
+            >
+          </div>
+          <button id="accesBtn" type="submit" class="btn btn-primary">
+            Acceder
+          </button>
         </form>
       </div>
 
-      <!--analisis-->
+      <!--formulario-paciente-->
+      <!--formulario-paciente-->
       <div
-        id="analisys"
-        class="container text-center analisis-container d-none"
+        id="formPatientAnalisisTalon"
+        class="d-none col-sm-12 col-md-10 col-lg-10"
       >
-        <div id="analisysContainer" class="row row-cols-4"></div>
-        <button
-          id="analysisBtnBack"
-          type="button"
-          class="btn-analisis-enviar btn btn-success"
-        >
-          volver
-        </button>
-        <button
-          id="analysisBtnFinish"
-          type="button"
-          class="btn-analisis-enviar btn btn-success"
-        >
-          Finalizar
-        </button>
-      </div>
+        <div id="patientFormContainer" class="radius-celeste col-md-12">
+          <h2 id="patientFormWelcome"></h2>
+          <h3>por favor ingrese los datos del paciente</h3>
+          <form
+            id="patientForm"
+            class="row g-3 needs-validation margin40"
+            novalidate
+          >
+            <div class="col-md-6">
+              <label for="patientFormInputName" class="form-label"
+                >Nombre completo</label
+              >
+              <input
+                type="text"
+                class="form-control patient-form_input"
+                id="patientFormInputName"
+                required
+              />
+              <label for="patientFormInputSurname" class="form-label"
+                >Apellido</label
+              >
+              <input
+                type="text"
+                class="form-control patient-form_input"
+                id="patientFormInputSurname"
+                required
+              />
+              <label for="patientFormInputDni" class="form-label">DNI</label>
+              <input
+                type="number"
+                class="form-control patient-form_input"
+                id="patientFormInputDni"
+                aria-describedby="inputGroupPrepend"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="patientFormInputMail" class="form-label">Tel</label>
+              <input
+                type="number"
+                class="form-control patient-form_input"
+                id="patientFormInputMail"
+                required
+              />
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="patientFormInputGender" class="form-label"
+                    >Genero</label
+                  >
+                  <select
+                    class="form-select patient-form_input"
+                    id="patientFormInputGender"
+                    required
+                  >
+                    <option selected disabled value="">defecto...</option>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid state.
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="patientFormInputAge" class="form-label"
+                    >Edad</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control patient-form_input"
+                    id="patientFormInputAge"
+                    required
+                  />
+                </div>
+              </div>
 
-      <!--talon-->
-      <div id="talonContainer" class="d-none">
-        <div id="talon" class="container talon"></div>
+              <button
+                class="patient-form__btn btn btn-primary"
+                type="submit"
+                id="patientFormBtnNext"
+              >
+                Siguiente
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!--analisis-->
+        <div id="analisys" class="radius-celeste d-none">
+          <div class="row">
+            <div id="analysisContainer" class="analysis__container col-md-10">
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+              <div class="tarjeta"></div>
+            </div>
+            <div class="col-md-2 analysis__btn-container">
+              <button
+                id="analysisBtnBack"
+                type="button"
+                class="btn-analisis-enviar btn btn-success"
+              >
+                volver
+              </button>
+              <button
+                id="analysisBtnFinish"
+                type="button"
+                class="btn-analisis-enviar btn btn-success"
+              >
+                Finalizar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--talon-->
+        <div id="talonContainer" class="d-none">
+          <div id="talon" class="container talon"></div>
+          <button
+            class="patient-form__btn btn btn-primary"
+            type="submit"
+            id="talonBtnAddPatient"
+          >
+            Agregar nuevo paciente
+          </button>
+        </div>
+
+        <!--lista-->
+        <div id="patientListContainer" class="container d-none">
+          <h2>Lista de pacientes</h2>
+          <div id="patientList" class="container">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOne"
+                  >
+                    Accordion Item #1
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseOne"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    Placeholder content for this accordion, which is intended to
+                    demonstrate the <code>.accordion-flush</code> class. This is
+                    the first item's accordion body.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseTwo"
+                  >
+                    Accordion Item #2
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseTwo"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    Placeholder content for this accordion, which is intended to
+                    demonstrate the <code>.accordion-flush</code> class. This is
+                    the second item's accordion body. Let's imagine this being
+                    filled with some actual content.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseThree"
+                  >
+                    Accordion Item #3
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseThree"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    Placeholder content for this accordion, which is intended to
+                    demonstrate the <code>.accordion-flush</code> class. This is
+                    the third item's accordion body. Nothing more exciting
+                    happening here in terms of content, but just filling up the
+                    space to make it look, at least at first glance, a bit more
+                    representative of how this would look in a real-world
+                    application.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Botones-->
+        <button
+          class="patient-form__btn btn btn-info"
+          type="submit"
+          id="ListPatientbtn"
+        >
+          Lista de pacientes
+        </button>
+
         <button
           class="patient-form__btn btn btn-primary"
-          type="submit"
-          id="talonBtnAddPatient"
+          type="button"
+          id="signOff"
         >
-          Agregar nuevo paciente
+          cerrar sesion
         </button>
       </div>
-
-      <button
-        class="patient-form__btn btn btn-primary"
-        type="submit"
-        id="signOff"
-      >
-        cerrar sesion
-      </button>
     </div>
-
     <script src="js/script.js"></script>
   </body>
 </html>

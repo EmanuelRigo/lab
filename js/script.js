@@ -16,17 +16,19 @@ const patientFormInputAge = document.getElementById("patientFormInputAge")
 const patientFormBtnNext = document.getElementById("patientFormBtnNext")
 const patientFormWelcome = document.getElementById("patientFormWelcome")
 
-const signOff = document.getElementById("signOff")
-
-
-const analisys = document.getElementById("analisys")
-const analisysContainer = document.getElementById("analisysContainer")
+const analysis = document.getElementById("analisys")
+const analysisContainer = document.getElementById("analysisContainer")
 const analisysBtnFinish = document.getElementById("analysisBtnFinish")
 const analysisBtnBack = document.getElementById("analysisBtnBack")
 
 const talonContainer = document.getElementById("talonContainer")
 const talon = document.getElementById("talon")
 const talonBtnAddPatient = document.getElementById("talonBtnAddPatient")
+
+const patientListContainer = document.getElementById("patientListContainer")
+const patientList = document.getElementById("patientList")
+
+const signOff = document.getElementById("signOff")
 
 
 
@@ -159,7 +161,7 @@ fetch(urlArchivoJSON)
   })
   .then(data => {
     analisisDB = analisisDB.concat(data);
-    cardsAnalisis(analisisDB, analisysContainer)
+    cardsAnalisis(analisisDB, analysisContainer)
   })
   .catch(error => {
     console.error('Error:', error);
@@ -167,30 +169,17 @@ fetch(urlArchivoJSON)
 
 let analisisSumados = []
 
-function cardsAnalisis(array, container) {
+function cardsAnalisis(array, container) {/*
   container.innerHTML = "";
   for (item of array) {
     let card = document.createElement("div");
-    card.className = "col d-flex justify-content-center";
+    card.className = "tarjeta";
     card.id = item.nombre;
-    card.innerHTML = `
-    <div class="card tarjeta">
-      <div class="card-body">
-       <h5 class="card-title">${item.nombre} </h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Precio: $${item.precio}</li>
-      <li class="list-group-item">Demora: ${item.tiempo} dias </li>
-    </ul>
-    <div class="card-body">
-    <button type="button" data-filter="${item.nombre}" class="btn btn-info analisysBtnAdd">Agregar</button>
-    <button type="button" class="btn btn-warning analisysBtnRemove">Quitar</button>
-    </div>
-  </div>`
+    card.innerHTML = `<div><`
     container.append(card);
-  }
+}*/
 
-  analysisBtnBack.addEventListener("click", () => { cambiarEstado(analisys, patientFormContainer) })
+  analysisBtnBack.addEventListener("click", () => { cambiarEstado(analysis, patientFormContainer) })
 
   /********////////pasar a funciones asincronas////////******/
 
@@ -282,6 +271,8 @@ function cerrarSession() {
 }
 
 analisysBtnFinish.addEventListener("click", sumarPaciente)
+
+
 
 console.log(patientDB)
 
