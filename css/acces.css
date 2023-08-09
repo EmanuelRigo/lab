@@ -60,13 +60,40 @@ body {
   justify-content: space-evenly;
 }
 
-.tarjeta {
+.analysis__card {
   text-align: center;
   box-sizing: border-box;
   min-width: 100px;
   max-width: 250px;
   height: 200px;
-  background-color: red;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.analysis__card p {
+  margin: 0;
+}
+
+.analysis__card-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(69, 180, 231);
+  height: 75px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+}
+
+.analysis__card-titulo h5 {
+  font-size: 22px;
+  color: aliceblue;
+}
+
+.analysis__card-footer {
+  border-top: 1px solid gray;
 }
 
 .btn-analisis-enviar {
@@ -74,6 +101,9 @@ body {
   font-size: 20px;
   height: 48%;
   margin: 20px;
+}
+
+.analysis__card-price {
 }
 
 .talon {

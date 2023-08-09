@@ -169,15 +169,24 @@ fetch(urlArchivoJSON)
 
 let analisisSumados = []
 
-function cardsAnalisis(array, container) {/*
+function cardsAnalisis(array, container) {
   container.innerHTML = "";
   for (item of array) {
     let card = document.createElement("div");
-    card.className = "tarjeta";
+    card.className = "analysis__card";
     card.id = item.nombre;
-    card.innerHTML = `<div><`
+    card.innerHTML = `  <div class="analysis__card-titulo">
+    <h5>${item.nombre} </h5>
+  </div>
+  <div>
+    <div class="analysis__card-price">
+        <p>precio: $${item.precio} </p>
+        <p>dias: ${item.tiempo} </p>
+    </div>
+    </div>
+    <div class="analysis__card-footer">Card footer</div>`
     container.append(card);
-}*/
+  }
 
   analysisBtnBack.addEventListener("click", () => { cambiarEstado(analysis, patientFormContainer) })
 
