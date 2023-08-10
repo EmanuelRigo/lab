@@ -175,7 +175,7 @@ function cardsAnalisis(array, container) {
     let card = document.createElement("div");
     card.className = "analysis__card";
     card.id = item.nombre;
-    card.innerHTML = `  <div class="analysis__card-titulo">
+    card.innerHTML = `  <div class="analysis__card-titulo ${item.agregado == false ? "" : "analysis__card-titulo-agregado"}">
     <h5>${item.nombre} </h5>
   </div>
   <div>
@@ -184,20 +184,65 @@ function cardsAnalisis(array, container) {
         <p>dias: ${item.tiempo} </p>
     </div>
     </div>
-    <div class="analysis__card-footer">Card footer</div>`
+    <button type="button" data-filter="${item.nombre}" class="analysis__card-btn">${item.agregado == false ? "agregar" : "eliminar"} </button>`
     container.append(card);
+
+    const analisysBtnAdd = document.querySelectorAll(".analysis__card-btn")
+
+    /*analisysBtnAdd.forEach((btn) => {
+      btn.addEventListener("click", () => { agregarAnalisis(btn.dataset.filter) })
+    })*/
+
+    /*function agregarAnalisis(analisis) {
+      if (analisis.dataset === analisisDB.nombre) {
+        function isTrue(estudio) {
+          return estudio.nombre === analisis;
+        }
+
+        console.log(analisisSumados.push(analisisDB.find(isTrue)))
+        console.log(analisisSumados)
+      } else {
+        return console.log("chau")
+      }
+
+    }*/
+
+
   }
 
   analysisBtnBack.addEventListener("click", () => { cambiarEstado(analysis, patientFormContainer) })
 
   /********////////pasar a funciones asincronas////////******/
 
-  const analisysBtnAdd = document.querySelectorAll(".analisysBtnAdd")
-  const analisysCard = document.querySelectorAll(".col")
+  const analisysBtnAdd = document.querySelectorAll(".analysis__card-btn")
 
   analisysBtnAdd.forEach((btn) => {
-    btn.addEventListener(("click"), () => { sumarAnalisis(btn.dataset.filter) })
+    btn.addEventListener(("click"), () => { agregarAnalisis(btn.dataset.filter) })
   })
+
+  function agregarAnalisis(analisis) {
+    if (analisis.dataset === analisisDB.nombre) {
+      function isTrue(estudio) {
+        return estudio.nombre === analisis;
+      }
+
+
+      if (analisisDB.find(isTrue).agregado == true) {
+        analisisDB.find(isTrue).agregado = false; cardsAnalisis(analisisDB, analysisContainer)
+      } else { analisisDB.find(isTrue).agregado = true; cardsAnalisis(analisisDB, analysisContainer) }
+
+
+
+
+
+      console.log(analisisDB)
+      console.log(analisisSumados)
+    } else {
+      return console.log("chau")
+    }
+
+  }
+
 
 
   function sumarAnalisis(analisis) {

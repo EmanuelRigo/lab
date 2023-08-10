@@ -47,7 +47,7 @@ body {
 .analysis__container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 200px;
+  grid-auto-rows: 1fr;
   grid-gap: 10px;
   justify-content: center;
   align-items: center;
@@ -67,10 +67,12 @@ body {
   max-width: 250px;
   height: 200px;
   background-color: whitesmoke;
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  padding: 6px;
 }
 
 .analysis__card p {
@@ -84,7 +86,11 @@ body {
   background-color: rgb(69, 180, 231);
   height: 75px;
   margin-bottom: 5px;
-  border-radius: 2px;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.analysis__card-titulo-agregado {
+  background-color: #24b849;
 }
 
 .analysis__card-titulo h5 {
@@ -92,8 +98,15 @@ body {
   color: aliceblue;
 }
 
-.analysis__card-footer {
-  border-top: 1px solid gray;
+.analysis__card-btn {
+  background-color: #bbb;
+  border-radius: 0 0 3px 3px;
+  color: white;
+  border: none;
+}
+
+.analysis__card-btn:hover {
+  background-color: #24b849;
 }
 
 .btn-analisis-enviar {
