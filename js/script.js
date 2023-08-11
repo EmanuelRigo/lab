@@ -188,29 +188,9 @@ function cardsAnalisis(array, container) {
     container.append(card);
 
     const analisysBtnAdd = document.querySelectorAll(".analysis__card-btn")
-
-    /*analisysBtnAdd.forEach((btn) => {
-      btn.addEventListener("click", () => { agregarAnalisis(btn.dataset.filter) })
-    })*/
-
-    /*function agregarAnalisis(analisis) {
-      if (analisis.dataset === analisisDB.nombre) {
-        function isTrue(estudio) {
-          return estudio.nombre === analisis;
-        }
-
-        console.log(analisisSumados.push(analisisDB.find(isTrue)))
-        console.log(analisisSumados)
-      } else {
-        return console.log("chau")
-      }
-
-    }*/
-
-
   }
 
-  analysisBtnBack.addEventListener("click", () => { cambiarEstado(analysis, patientFormContainer) })
+
 
   /********////////pasar a funciones asincronas////////******/
 
@@ -226,34 +206,14 @@ function cardsAnalisis(array, container) {
         return estudio.nombre === analisis;
       }
 
-
       if (analisisDB.find(isTrue).agregado == true) {
-        analisisDB.find(isTrue).agregado = false; cardsAnalisis(analisisDB, analysisContainer)
-      } else { analisisDB.find(isTrue).agregado = true; cardsAnalisis(analisisDB, analysisContainer) }
+        analisisDB.find(isTrue).agregado = false
+      } else { analisisDB.find(isTrue).agregado = true }
+      cardsAnalisis(analisisDB, analysisContainer)
 
-
-
-
-
-      console.log(analisisDB)
-      console.log(analisisSumados)
+      analisisSumados = analisisDB.filter((analisis) => analisis.agregado === true)
     } else {
-      return console.log("chau")
-    }
-
-  }
-
-
-
-  function sumarAnalisis(analisis) {
-    if (analisis.dataset === analisisDB.nombre) {
-      function isTrue(estudio) {
-        return estudio.nombre === analisis;
-      }
-
-      analisisSumados.push(analisisDB.find(isTrue))
-    } else {
-      return console.log("chau")
+      return console.log("algo salio mal")
     }
 
   }
@@ -303,32 +263,37 @@ function talonPaciente(container) {
   }
 }
 
+function analisysListFalse(array) {
+  array.forEach(objeto => {
+    objeto.agregado = false;
+  });
+  cardsAnalisis(analisisDB, analysisContainer)
+}
+
 talonBtnAddPatient.addEventListener("click", () => {
-  analisisSumados = []
   patientForm.reset();
   cambiarEstado(talonContainer, patientFormContainer)
+  analisysListFalse(analisisDB)
   console.log(patientDB)
 })
 
+analysisBtnBack.addEventListener("click", () => { cambiarEstado(analysis, patientFormContainer) })
+
 signOff.addEventListener("click", cerrarSession)
 
+
 function cerrarSession() {
+  analisysListFalse(analisisDB)
   localStorage.clear();
   sessionStorage.clear();
   patientFormContainer.classList.remove("d-none")
   analisys.classList.add("d-none")
   talon.classList.add("d-none")
   talon.innerHTML = ''
-  analisisSumados = []
   cambiarEstado(acces, formPatientAnalisisTalon)
-
 }
 
 analisysBtnFinish.addEventListener("click", sumarPaciente)
-
-
-
-console.log(patientDB)
 
 
 window.onload = () => estaLogueado(recuperarUsuario(localStorage));
