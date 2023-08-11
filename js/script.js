@@ -28,9 +28,24 @@ const talonBtnAddPatient = document.getElementById("talonBtnAddPatient")
 const patientListContainer = document.getElementById("patientListContainer")
 const patientList = document.getElementById("patientList")
 
+const patientListBtn = document.getElementById("patientListBtn")
+const patientFormBtn = document.getElementById("patientFormBtn")
 const signOff = document.getElementById("signOff")
 
+patientListBtn.addEventListener("click", () => {
+  analysis.classList.add("d-none")
+  talonContainer.classList.add("d-none")
+  patientFormContainer.classList.add("d-none")
+  talonContainer.classList.add("d-none")
+  patientListBtn.classList.add("d-none")
+  patientListContainer.classList.remove("d-none")
+  patientFormBtn.classList.remove("d-none")
+})
 
+patientFormBtn.addEventListener("click", () => {
+  cambiarEstado(patientFormContainer, patientListContainer)
+  cambiarEstado(patientFormBtn, patientListBtn)
+})
 
 const usersDB = [{
   "nombreUsuario": "maira.lab",
@@ -224,6 +239,13 @@ function cardsAnalisis(array, container) {
 /////////Funciones de Talon/////////
 
 function talonPaciente(container) {
+  let precioTotal = 0
+  const sumarPrecios = analisisSumados.map((item1) => item1.precio)
+  for (let i = 0; i < sumarPrecios.length; i++) precioTotal += sumarPrecios[i]
+
+  const cantidadDias = analisisSumados.map((item1) => item1.tiempo)
+  let diasTotal = Math.max(...cantidadDias)
+
   container.innerHTML = ''
   container.innerHTML = `<div class="talon_card card mb-3">
   <div class="card-header bg-transparent border-success">
@@ -238,7 +260,7 @@ function talonPaciente(container) {
   </div>
   <div class="card-footer bg-transparent border-success">
     <table class="talon-table table caption-top">
-      <thead >
+      <thead>
         <tr>
           <th scope="col">Analisis</th>
           <th scope="col">Dias</th>
@@ -247,7 +269,14 @@ function talonPaciente(container) {
       </thead>
       <tbody id="talon__tbody">
       </tbody>
-    </table>
+      <thead>
+      <tr class="table-secondary">
+        <th scope="col">total</th>
+        <th scope="col">${diasTotal} </th>
+        <th scope="col">${precioTotal} </th>
+      </tr>
+      </thead>
+    </table> 
   </div>
 </div>`
 
@@ -261,6 +290,7 @@ function talonPaciente(container) {
 
     talonThead.append(trAnalysis)
   }
+
 }
 
 function analisysListFalse(array) {
@@ -275,6 +305,7 @@ talonBtnAddPatient.addEventListener("click", () => {
   cambiarEstado(talonContainer, patientFormContainer)
   analisysListFalse(analisisDB)
   console.log(patientDB)
+  analisisSumados = []
 })
 
 analysisBtnBack.addEventListener("click", () => { cambiarEstado(analysis, patientFormContainer) })
@@ -288,9 +319,14 @@ function cerrarSession() {
   sessionStorage.clear();
   patientFormContainer.classList.remove("d-none")
   analisys.classList.add("d-none")
-  talon.classList.add("d-none")
+  talonContainer.classList.add("d-none")
   talon.innerHTML = ''
   cambiarEstado(acces, formPatientAnalisisTalon)
+  patientListBtn.classList.remove("d-none")
+  patientFormBtn.classList.add("d-none")
+  patientListContainer.classList.add("d-none")
+  patientForm.reset();
+
 }
 
 analisysBtnFinish.addEventListener("click", sumarPaciente)
