@@ -26,11 +26,49 @@ const talon = document.getElementById("talon")
 const talonBtnAddPatient = document.getElementById("talonBtnAddPatient")
 
 const patientListContainer = document.getElementById("patientListContainer")
+const patientItemContainer = document.getElementById("accordionFlushExample")
 const patientList = document.getElementById("patientList")
 
 const patientListBtn = document.getElementById("patientListBtn")
 const patientFormBtn = document.getElementById("patientFormBtn")
 const signOff = document.getElementById("signOff")
+
+function listaPacientes(array, container) {
+  container.innerHTML = ""
+  for (item of array) {
+    let patientItem = document.createElement("div");
+    patientItem.className = "accordion-item"
+    patientItem.innerHTML = ` <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOne"
+                  >
+                    ${item.name + " " + item.surname}
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseOne"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div id="itemAnalysis" class="accordion-body">
+                    </div>
+                </div>`
+
+                
+                for (item of patientDB[patientDB.length].analysis) {
+                  const itemAnalysis = document.getElementById("itemAnalysis")
+                  itemAnalysis.innerHTML = `<p>${item.nombre} </p>`
+                }
+
+                container.append(patientItem);
+  }
+
+}
 
 patientListBtn.addEventListener("click", () => {
   analysis.classList.add("d-none")
@@ -40,6 +78,7 @@ patientListBtn.addEventListener("click", () => {
   patientListBtn.classList.add("d-none")
   patientListContainer.classList.remove("d-none")
   patientFormBtn.classList.remove("d-none")
+  listaPacientes(patientDB, patientItemContainer)
 })
 
 patientFormBtn.addEventListener("click", () => {
