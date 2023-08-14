@@ -33,41 +33,65 @@ const patientListBtn = document.getElementById("patientListBtn")
 const patientFormBtn = document.getElementById("patientFormBtn")
 const signOff = document.getElementById("signOff")
 
+
+function toCapitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function numberToWords(number) {
+  const units = [
+    "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+  ];
+
+  const tens = [
+    "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+  ];
+
+  if (number < 20) {
+    return units[number];
+  } else if (number < 100) {
+    return tens[Math.floor(number / 10)] + (number % 10 !== 0 ? " " + units[number % 10] : "");
+  } else if (number < 1000) {
+    return units[Math.floor(number / 100)] + " hundred" + (number % 100 !== 0 ? " and " + numberToWords(number % 100) : "");
+  } else if (number < 1000000) {
+    return numberToWords(Math.floor(number / 1000)) + " thousand" + (number % 1000 !== 0 ? " " + numberToWords(number % 1000) : "");
+  } else if (number < 1000000000) {
+    return numberToWords(Math.floor(number / 1000000)) + " million" + (number % 1000000 !== 0 ? " " + numberToWords(number % 1000000) : "");
+  } else {
+    return "Number too large to convert";
+  }
+}
+
+
 function listaPacientes(array, container) {
   container.innerHTML = ""
   for (item of array) {
     let patientItem = document.createElement("div");
     patientItem.className = "accordion-item"
-    patientItem.innerHTML = ` <h2 class="accordion-header">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseOne"
-                    aria-expanded="false"
-                    aria-controls="flush-collapseOne"
-                  >
-                    ${item.name + " " + item.surname}
-                  </button>
-                </h2>
-                <div
-                  id="flush-collapseOne"
-                  class="accordion-collapse collapse"
-                  data-bs-parent="#accordionFlushExample"
-                >
-                  <div id="itemAnalysis" class="accordion-body">
-                    </div>
-                </div>`
+    patientItem.innerHTML = `  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${toCapitalize(numberToWords(item.id).replace(/\s+/g, ''))}" aria-expanded="false" aria-controls="flush-collapse${toCapitalize(numberToWords(item.id).replace(/\s+/g, ''))}">
+        ${item.name + " " + item.surname}
+      </button>
+    </h2>
+    <div id="flush-collapse${toCapitalize(numberToWords(item.id).replace(/\s+/g, ''))}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+      <div name="${item.id}" class="accordion-body"></div>
+    </div>
+  </div>`
+    container.append(patientItem);
 
-                
-                for (item of patientDB[patientDB.length].analysis) {
-                  const itemAnalysis = document.getElementById("itemAnalysis")
-                  itemAnalysis.innerHTML = `<p>${item.nombre} </p>`
-                }
-
-                container.append(patientItem);
+    const itemAnalysis = document.getElementsByName(item.id)
+    console.log(itemAnalysis)
+    for (item1 of itemAnalysis) {
+      for (item2 of item.analysis) {
+        const itemP = document.createElement("p")
+        itemP.innerHTML = `${item2.nombre}`
+        item1.append(itemP)
+      }
+    }
+    console.log(itemAnalysis)
   }
-
 }
 
 patientListBtn.addEventListener("click", () => {
@@ -169,7 +193,7 @@ function estaLogueado(usuario) {
 let patientDB = [];
 
 class Patient {
-  constructor(name, surname, dni, tel, gender, age, analysis) {
+  constructor(name, surname, dni, tel, gender, age, analysis, id) {
     this.name = name;
     this.surname = surname;
     this.dni = dni;
@@ -177,6 +201,7 @@ class Patient {
     this.gender = gender;
     this.age = age;
     this.analysis = analysis
+    this.id = id
   }
 }
 
@@ -193,7 +218,8 @@ function sumarPaciente() {
       patientFormInputMail.value,
       patientFormInputGender.value,
       patientFormInputAge.value,
-      analisisSumados
+      analisisSumados,
+      patientDB.length + 1
     )
   )
   cambiarEstado(analisys, talonContainer)
