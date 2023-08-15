@@ -20,7 +20,10 @@ body {
   background-color: #97d4f3;
   border-radius: 20px;
   padding: 40px;
+  max-width: 1600px;
 }
+
+/*/////////PATIENT-FORM/////////*/
 
 .patient-form {
   max-width: 800px;
@@ -34,15 +37,16 @@ body {
   flex-direction: column;
 }
 
-.patient-form__btn {
-  min-width: 100%;
-
-  margin-top: 32px;
-}
-
 .patient-form_input {
   margin-bottom: 10px;
 }
+
+.patient-form__btn {
+  width: 100%;
+  margin-top: 40px;
+}
+
+/*/////////ANALYSIS/////////*/
 
 .analysis__container {
   display: grid;
@@ -65,7 +69,7 @@ body {
   box-sizing: border-box;
   min-width: 100px;
   max-width: 250px;
-  height: 200px;
+  min-height: 140px;
   background-color: whitesmoke;
   border-radius: 6px;
   display: flex;
@@ -84,7 +88,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: rgb(69, 180, 231);
-  height: 75px;
+  height: 55px;
   margin-bottom: 5px;
   border-radius: 3px 3px 0px 0px;
 }
@@ -96,6 +100,7 @@ body {
 .analysis__card-titulo h5 {
   font-size: 22px;
   color: aliceblue;
+  margin-bottom: 0;
 }
 
 .analysis__card-btn {
@@ -110,14 +115,22 @@ body {
 }
 
 .btn-analisis-enviar {
-  width: 100%;
+  min-width: 100px;
+  max-width: 300px;
   font-size: 20px;
-  height: 48%;
+  height: 150px;
   margin: 20px;
 }
 
 .analysis__card-price {
   color: black;
+}
+
+/*/////////CSS TALON/////////*/
+
+.talon__container {
+  height: calc(100% - 67px);
+  box-sizing: border-box;
 }
 
 .talon {
@@ -143,6 +156,25 @@ body {
   padding: 20px;
 }
 
+/*/////////CSS BTN-LABS/////////*/
+
+.btns-lab__container {
+  display: flex;
+  padding: 10px;
+  justify-content: space-evenly;
+}
+
 .margin40 {
   margin: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  .radius-celeste {
+    padding: 0 40px 0 40px;
+    min-height: 600px;
+    min-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }

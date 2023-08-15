@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="css/acces.css" />
   </head>
   <body>
-    <!--acces-->
     <div class="second-body">
+      <!--acces-->
       <div id="acces" class="radius-celeste col-md-10 col-lg-6">
         <h1>Bienvenido al laboratorio</h1>
         <form>
@@ -67,19 +67,16 @@
       </div>
 
       <!--formulario-paciente-->
-      <!--formulario-paciente-->
+
       <div
         id="formPatientAnalisisTalon"
-        class="d-none col-sm-12 col-md-10 col-xxl-8 radius-celeste"
+        class="d-none col-sm-12 col-md-12 col-xxl-6 radius-celeste"
       >
+        <!--formulario-paciente-->
         <div id="patientFormContainer" class="col-md-12">
           <h2 id="patientFormWelcome"></h2>
           <h3>por favor ingrese los datos del paciente</h3>
-          <form
-            id="patientForm"
-            class="row g-3 needs-validation margin40"
-            novalidate
-          >
+          <form id="patientForm" class="row g-3 needs-validation" novalidate>
             <div class="col-md-6">
               <label for="patientFormInputName" class="form-label"
                 >Nombre completo</label
@@ -185,7 +182,7 @@
         </div>
 
         <!--talon-->
-        <div id="talonContainer" class="d-none">
+        <div id="talonContainer" class="talon__container d-none">
           <div id="talon" class="container talon"></div>
           <button
             class="patient-form__btn btn btn-primary"
@@ -208,29 +205,23 @@
         </div>
 
         <!--Botones-->
-        <button
-          class="patient-form__btn btn btn-info"
-          type="btn"
-          id="patientListBtn"
-        >
-          Lista de pacientes
-        </button>
+        <div class="btns-lab__container col-md-12">
+          <button class="btn-lab btn btn-info" type="btn" id="patientListBtn">
+            Pacientes
+          </button>
 
-        <button
-          class="patient-form__btn btn btn-info d-none"
-          type="btn"
-          id="patientFormBtn"
-        >
-          Inicio
-        </button>
+          <button
+            class="btn-lab btn btn-info d-none"
+            type="btn"
+            id="patientFormBtn"
+          >
+            Inicio
+          </button>
 
-        <button
-          class="patient-form__btn btn btn-primary"
-          type="button"
-          id="signOff"
-        >
-          cerrar sesion
-        </button>
+          <button class="btn-lab btn btn-primary" type="button" id="signOff">
+            cerrar sesion
+          </button>
+        </div>
       </div>
     </div>
     <script src="js/script.js"></script>
