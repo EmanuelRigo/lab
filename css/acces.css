@@ -55,6 +55,7 @@ body {
   grid-gap: 10px;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
 .analysis__btn-container {
