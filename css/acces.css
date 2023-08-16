@@ -17,7 +17,7 @@ body {
 }
 
 .radius-celeste {
-  background-color: red;
+  background-color: #97d4f3;
   border-radius: 20px;
   padding: 40px;
   max-width: 1600px;
@@ -159,10 +159,17 @@ body {
 
 /*/////////CSS BTN-LABS/////////*/
 
+.patient-form__btn {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
 .btns-lab__container {
   display: flex;
-  padding: 10px;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .margin40 {
@@ -172,10 +179,9 @@ body {
 @media screen and (max-width: 1200px) {
   .radius-celeste {
     padding: 0 40px 0 40px;
-    min-height: 600px;
+    min-height: 550px;
     min-width: 1024px;
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
   }
 }

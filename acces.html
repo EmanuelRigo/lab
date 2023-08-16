@@ -68,12 +68,9 @@
 
       <!--formulario-paciente-->
 
-      <div
-        id="formPatientAnalisisTalon"
-        class="d-none col-sm-12 col-md-12 col-xl-8 radius-celeste"
-      >
+      <div id="formPatientAnalisisTalon" class="d-none row radius-celeste">
         <!--formulario-paciente-->
-        <div id="patientFormContainer" class="col-md-12">
+        <div id="patientFormContainer" class="col-md-10">
           <h2 id="patientFormWelcome"></h2>
           <h3>por favor ingrese los datos del paciente</h3>
           <form id="patientForm" class="row g-3 needs-validation" novalidate>
@@ -143,14 +140,6 @@
                   />
                 </div>
               </div>
-
-              <button
-                class="patient-form__btn btn btn-primary"
-                type="submit"
-                id="patientFormBtnNext"
-              >
-                Siguiente
-              </button>
             </div>
           </form>
         </div>
@@ -205,22 +194,33 @@
         </div>
 
         <!--Botones-->
-        <div class="btns-lab__container col-md-12">
-          <button class="btn-lab btn btn-info" type="btn" id="patientListBtn">
-            Pacientes
-          </button>
+        <div class="btns-lab__container col-md-2">
+          <div class="btns-lab__top">
+            <button
+              class="patient-form__btn btn btn-primary"
+              type="submit"
+              id="patientFormBtnNext"
+            >
+              Siguiente
+            </button>
+          </div>
+          <div class="btns-lab__bottom">
+            <button class="btn-lab btn btn-info" type="btn" id="patientListBtn">
+              Pacientes
+            </button>
 
-          <button
-            class="btn-lab btn btn-info d-none"
-            type="btn"
-            id="patientFormBtn"
-          >
-            Inicio
-          </button>
+            <button
+              class="btn-lab btn btn-info d-none"
+              type="btn"
+              id="patientFormBtn"
+            >
+              Inicio
+            </button>
 
-          <button class="btn-lab btn btn-primary" type="button" id="signOff">
-            cerrar sesion
-          </button>
+            <button class="btn-lab btn btn-primary" type="button" id="signOff">
+              cerrar sesion
+            </button>
+          </div>
         </div>
       </div>
     </div>
