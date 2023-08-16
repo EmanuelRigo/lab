@@ -70,7 +70,10 @@
 
       <div id="formPatientAnalisisTalon" class="d-none row radius-celeste">
         <!--formulario-paciente-->
-        <div id="patientFormContainer" class="col-md-10">
+        <div
+          id="patientFormContainer"
+          class="col-md-10 patient-form__container"
+        >
           <h2 id="patientFormWelcome"></h2>
           <h3>por favor ingrese los datos del paciente</h3>
           <form id="patientForm" class="row g-3 needs-validation" novalidate>
@@ -145,28 +148,12 @@
         </div>
 
         <!--analisis-->
-        <div id="analisys" class="col-md-12 d-none">
+        <div id="analisys" class="col-md-10 d-none">
           <div class="row">
             <div
               id="analysisContainer"
               class="analysis__container col-lg-10 col-md-12"
             ></div>
-            <div class="col-lg-2 col-md-12 analysis__btn-container">
-              <button
-                id="analysisBtnBack"
-                type="button"
-                class="btn-analisis-enviar btn btn-success"
-              >
-                volver
-              </button>
-              <button
-                id="analysisBtnFinish"
-                type="button"
-                class="btn-analisis-enviar btn btn-success"
-              >
-                Finalizar
-              </button>
-            </div>
           </div>
         </div>
 
@@ -203,6 +190,20 @@
             >
               next
             </button>
+            <button
+              id="analysisBtnBack"
+              type="button"
+              class="analysis__btn btn btn-success d-none"
+            >
+              volver
+            </button>
+            <button
+              id="analysisBtnFinish"
+              type="button"
+              class="analysis__btn btn btn-success d-none"
+            >
+              Finalizar
+            </button>
           </div>
           <div class="btns-lab__bottom">
             <button class="btn-lab btn btn-info" type="btn" id="patientListBtn">
@@ -218,7 +219,7 @@
             </button>
 
             <button class="btn-lab btn btn-primary" type="button" id="signOff">
-              cerrar sesion
+              X
             </button>
           </div>
         </div>

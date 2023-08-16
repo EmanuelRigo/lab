@@ -21,9 +21,17 @@ body {
   border-radius: 20px;
   padding: 40px;
   max-width: 1600px;
+  min-height: 600px;
+  box-sizing: border-box;
 }
 
 /*/////////PATIENT-FORM/////////*/
+
+.patient-form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
 .patient-form {
   max-width: 800px;
@@ -158,18 +166,36 @@ body {
 }
 
 /*/////////CSS BTN-LABS/////////*/
-
-.patient-form__btn {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-}
-
 .btns-lab__container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
+  background-color: azure;
+  border-radius: 20px;
+}
+
+.btns-lab__top {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-form__btn {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border: 4px solid whitesmoke;
+}
+
+.analysis__btn {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: #24b849;
+  color: aliceblue;
+  border: 4px solid whitesmoke;
+  margin-top: 40px;
 }
 
 .margin40 {

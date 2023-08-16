@@ -226,7 +226,13 @@ function sumarPaciente() {
   talonPaciente(talon)
 }
 
-patientFormBtnNext.addEventListener("click", (e) => { e.preventDefault(); cambiarEstado(patientFormContainer, analisys) })
+patientFormBtnNext.addEventListener("click", (e) => {
+  e.preventDefault()
+  cambiarEstado(patientFormContainer, analisys)
+  patientFormBtnNext.classList.add("d-none")
+  analysisBtnBack.classList.remove("d-none")
+  analisysBtnFinish.classList.remove("d-none")
+})
 
 /////////Funciones de Analisis/////////
 
@@ -371,9 +377,15 @@ talonBtnAddPatient.addEventListener("click", () => {
   analisysListFalse(analisisDB)
   console.log(patientDB)
   analisisSumados = []
+  patientFormBtnNext.classList.remove("d-none")
 })
 
-analysisBtnBack.addEventListener("click", () => { cambiarEstado(analysis, patientFormContainer) })
+analysisBtnBack.addEventListener("click", () => {
+  cambiarEstado(analysis, patientFormContainer)
+  patientFormBtnNext.classList.remove("d-none")
+  analysisBtnBack.classList.add("d-none")
+  analisysBtnFinish.classList.add("d-none")
+})
 
 signOff.addEventListener("click", cerrarSession)
 
@@ -394,7 +406,11 @@ function cerrarSession() {
 
 }
 
-analisysBtnFinish.addEventListener("click", sumarPaciente)
+analisysBtnFinish.addEventListener("click", () => {
+  sumarPaciente()
+  analysisBtnBack.classList.add("d-none")
+  analisysBtnFinish.classList.add("d-none")
+})
 
 
 window.onload = () => estaLogueado(recuperarUsuario(localStorage));
