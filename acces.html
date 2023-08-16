@@ -113,48 +113,34 @@
                 id="patientFormInputMail"
                 required
               />
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="patientFormInputGender" class="form-label"
-                    >Genero</label
-                  >
-                  <select
-                    class="form-select patient-form_input"
-                    id="patientFormInputGender"
-                    required
-                  >
-                    <option selected disabled value="">defecto...</option>
-                    <option>Masculino</option>
-                    <option>Femenino</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please select a valid state.
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="patientFormInputAge" class="form-label"
-                    >Edad</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control patient-form_input"
-                    id="patientFormInputAge"
-                    required
-                  />
-                </div>
-              </div>
+
+              <label for="patientFormInputGender" class="form-label"
+                >Genero</label
+              >
+              <select
+                class="form-select patient-form_input"
+                id="patientFormInputGender"
+                required
+              >
+                <option selected disabled value="">defecto...</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+              </select>
+
+              <label for="patientFormInputAge" class="form-label">Edad</label>
+              <input
+                type="number"
+                class="form-control patient-form_input"
+                id="patientFormInputAge"
+                required
+              />
             </div>
           </form>
         </div>
 
         <!--analisis-->
-        <div id="analisys" class="col-md-10 d-none">
-          <div class="row">
-            <div
-              id="analysisContainer"
-              class="analysis__container col-lg-10 col-md-12"
-            ></div>
-          </div>
+        <div id="analisys" class="col-md-10 d-none analysis__container">
+          <div id="analysisContainer" class="analysis__grid-container"></div>
         </div>
 
         <!--talon-->
