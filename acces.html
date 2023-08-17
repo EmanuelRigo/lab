@@ -20,6 +20,10 @@
       src="https://kit.fontawesome.com/e27004ce89.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="css/acces.css" />
   </head>
   <body>
@@ -74,8 +78,11 @@
           id="patientFormContainer"
           class="col-md-10 patient-form__container"
         >
-          <h2 id="patientFormWelcome"></h2>
-          <h3>por favor ingrese los datos del paciente</h3>
+          <div>
+            <h2 id="patientFormWelcome"></h2>
+            <h3>por favor ingrese los datos del paciente</h3>
+          </div>
+
           <form id="patientForm" class="row g-3 needs-validation" novalidate>
             <div class="col-md-6">
               <label for="patientFormInputName" class="form-label"
@@ -145,20 +152,12 @@
 
         <!--talon-->
         <div id="talonContainer" class="talon__container d-none">
-          <div id="talon" class="container talon"></div>
-          <button
-            class="patient-form__btn btn btn-primary"
-            type="submit"
-            id="talonBtnAddPatient"
-          >
-            Agregar nuevo paciente
-          </button>
+          <div id="talon" class="talon"></div>
         </div>
 
         <!--lista-->
-        <div id="patientListContainer" class="container d-none">
-          <h2>Lista de pacientes</h2>
-          <div id="patientList" class="container">
+        <div id="patientListContainer" class="patient-list__container d-none">
+          <div id="patientList" class="col-md-12 patient-list">
             <div
               class="accordion accordion-flush"
               id="accordionFlushExample"
@@ -170,42 +169,54 @@
         <div class="btns-lab__container col-md-2">
           <div class="btns-lab__top">
             <button
+              class="patient-form__btn btn btn-primary d-none"
+              type="btn"
+              id="patientFormBtn"
+            >
+              Inicio
+            </button>
+            <button
+              class="patient-form__btn btn btn-primary"
+              type="btn"
+              id="patientListBtn"
+            >
+              <i class="bi bi-person-lines-fill"></i>
+            </button>
+            <button
+              class="patient-form__btn btn btn-primary d-none"
+              type="submit"
+              id="talonBtnAddPatient"
+            >
+              <i class="bi bi-person-plus-fill"></i>
+            </button>
+            <button
               class="patient-form__btn btn btn-primary"
               type="submit"
               id="patientFormBtnNext"
             >
-              next
-            </button>
-            <button
-              id="analysisBtnBack"
-              type="button"
-              class="analysis__btn btn btn-success d-none"
-            >
-              volver
+              <i class="bi bi-arrow-right-short"></i>
             </button>
             <button
               id="analysisBtnFinish"
               type="button"
               class="analysis__btn btn btn-success d-none"
             >
-              Finalizar
+              <i class="bi bi-check2"></i>
+            </button>
+            <button
+              id="analysisBtnBack"
+              type="button"
+              class="analysis__btn btn btn-success d-none"
+            >
+              <i class="bi bi-arrow-left-short"></i>
             </button>
           </div>
           <div class="btns-lab__bottom">
-            <button class="btn-lab btn btn-info" type="btn" id="patientListBtn">
-              Pacientes
+            <button class="btn-lab btn btn-primary">
+              <i class="bi bi-box-arrow-left"></i>
             </button>
-
-            <button
-              class="btn-lab btn btn-info d-none"
-              type="btn"
-              id="patientFormBtn"
-            >
-              Inicio
-            </button>
-
             <button class="btn-lab btn btn-primary" type="button" id="signOff">
-              X
+              <i class="bi bi-x-lg"></i>
             </button>
           </div>
         </div>

@@ -103,11 +103,16 @@ patientListBtn.addEventListener("click", () => {
   patientListContainer.classList.remove("d-none")
   patientFormBtn.classList.remove("d-none")
   listaPacientes(patientDB, patientItemContainer)
+  patientFormBtnNext.classList.add("d-none")
+  analysisBtnBack.classList.add("d-none")
+  analisysBtnFinish.classList.add("d-none")
+  talonBtnAddPatient.classList.add("d-none")
 })
 
 patientFormBtn.addEventListener("click", () => {
   cambiarEstado(patientFormContainer, patientListContainer)
   cambiarEstado(patientFormBtn, patientListBtn)
+  patientFormBtnNext.classList.remove("d-none")
 })
 
 const usersDB = [{
@@ -318,24 +323,24 @@ function talonPaciente(container) {
   let diasTotal = Math.max(...cantidadDias)
 
   container.innerHTML = ''
-  container.innerHTML = `<div class="talon_card card mb-3">
-  <div class="card-header bg-transparent border-success">
-    identificador de analisis #${patientDB.length + patientDB[0].dni}
+  container.innerHTML = `<div class="talon_card row">
+  <div class="talon_card-body col-md-6">
+  <div class="talon__number-id">
+    identificador de analisis #${patientDB.length + patientDB[patientDB.length - 1].dni}
   </div>
-  <div class="talon_card-body">
-    <h5 class="card-title">${patientDB[patientDB.length - 1].name + ' ' + patientDB[patientDB.length - 1].surname}</h5>
-    <p>genero: ${patientDB[0].gender} </p>
-    <p>Edad: ${patientDB[0].age}</p>
-    <p class="card-text">dni: ${patientDB[0].dni}</p>
-    <p>tel: ${patientDB[0].tel}</p>
+    <h5 class="talon__name">${patientDB[patientDB.length - 1].name + ' ' + patientDB[patientDB.length - 1].surname}</h5>
+    <p>genero: ${patientDB[patientDB.length - 1].gender} </p>
+    <p>Edad: ${patientDB[patientDB.length - 1].age}</p>
+    <p class="card-text">dni: ${patientDB[patientDB.length - 1].dni}</p>
+    <p>tel: ${patientDB[patientDB.length - 1].tel}</p>
   </div>
-  <div class="card-footer bg-transparent border-success">
+  <div class="col-md-6">
     <table class="talon-table table caption-top">
       <thead>
         <tr>
-          <th scope="col">Analisis</th>
-          <th scope="col">Dias</th>
-          <th scope="col">Precio</th>
+          <th class="talon__th" scope="col">Analisis</th>
+          <th class="talon__th" scope="col">Dias</th>
+          <th class="talon__th" scope="col">Precio</th>
         </tr>
       </thead>
       <tbody id="talon__tbody">
@@ -378,6 +383,7 @@ talonBtnAddPatient.addEventListener("click", () => {
   console.log(patientDB)
   analisisSumados = []
   patientFormBtnNext.classList.remove("d-none")
+  talonBtnAddPatient.classList.add("d-none")
 })
 
 analysisBtnBack.addEventListener("click", () => {
@@ -410,6 +416,7 @@ analisysBtnFinish.addEventListener("click", () => {
   sumarPaciente()
   analysisBtnBack.classList.add("d-none")
   analisysBtnFinish.classList.add("d-none")
+  talonBtnAddPatient.classList.remove("d-none")
 })
 
 
