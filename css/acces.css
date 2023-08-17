@@ -6,6 +6,7 @@
 body {
   height: 100vh;
   width: 100vw;
+  font-family: "Poppins", sans-serif;
 }
 
 .second-body {
@@ -172,7 +173,7 @@ body {
   --bs-table-bg: #ffffff00;
 }
 .talon .talon__th {
-  padding-top: 0;
+  padding: 0 10px 10px 0;
 }
 
 /*/////////CSS PATIENT-LIST/////////*/
