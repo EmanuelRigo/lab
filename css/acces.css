@@ -190,6 +190,10 @@ body {
   overflow: hidden;
 }
 
+.accordion-body p {
+  font-weight: 300;
+}
+
 /*/////////CSS BTN-LABS/////////*/
 .btns-lab__container {
   display: flex;
@@ -202,6 +206,10 @@ body {
 
 .btns-lab__top i {
   font-size: 55px;
+}
+
+.btns-lab__bottom a {
+  color: aliceblue;
 }
 
 .btns-lab__top {

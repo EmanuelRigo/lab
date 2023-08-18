@@ -231,12 +231,29 @@ function sumarPaciente() {
   talonPaciente(talon)
 }
 
+function validarCampos() {
+  if (patientFormInputName.value.length === 0 ||
+    patientFormInputSurame.value.length === 0 ||
+    patientFormInputDni.value.length === 0 ||
+    patientFormInputMail.value.length === 0 ||
+    patientFormInputGender.value.length === 0 || patientFormInputAge.value.length === 0) {
+    Swal.fire({
+      heightAuto: false,
+      icon: 'error',
+      title: 'llene todos los campos'
+    })
+  }
+  else {
+    cambiarEstado(patientFormContainer, analisys)
+    patientFormBtnNext.classList.add("d-none")
+    analysisBtnBack.classList.remove("d-none")
+    analisysBtnFinish.classList.remove("d-none")
+  }
+}
+
 patientFormBtnNext.addEventListener("click", (e) => {
   e.preventDefault()
-  cambiarEstado(patientFormContainer, analisys)
-  patientFormBtnNext.classList.add("d-none")
-  analysisBtnBack.classList.remove("d-none")
-  analisysBtnFinish.classList.remove("d-none")
+  validarCampos()
 })
 
 /////////Funciones de Analisis/////////
