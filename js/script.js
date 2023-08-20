@@ -82,7 +82,6 @@ function listaPacientes(array, container) {
     container.append(patientItem);
 
     const itemAnalysis = document.getElementsByName(item.id)
-    console.log(itemAnalysis)
     for (item1 of itemAnalysis) {
       for (item2 of item.analysis) {
         const itemP = document.createElement("p")
@@ -90,7 +89,6 @@ function listaPacientes(array, container) {
         item1.append(itemP)
       }
     }
-    console.log(itemAnalysis)
   }
 }
 
@@ -157,11 +155,23 @@ function guardarUsuario(datos, storage) {
 accesBtn.addEventListener('click', (e) => {
   e.preventDefault();
   if (!accesInputEmail.value || !accesInputPassword.value) {
-    alert("por favor llene los campos")
+    Swal.fire({
+      heightAuto: false,
+      icon: 'error',
+      title: 'por favor llene todos los campos',
+      timer: 2000
+    })
   } else {
     let data = validarUsuario(usersDB, accesInputEmail.value, accesInputPassword.value)
 
-    if (!data) { alert("contraseña o mail incorrecto") } else {
+    if (!data) {
+      Swal.fire({
+        heightAuto: false,
+        icon: 'error',
+        title: 'mail o contraseña incorrectos',
+        timer: 2000
+      })
+    } else {
       if (accesCheckSession.checked) {
         alert("ingreso exitoso")
         cambiarEstado(acces, formPatientAnalisisTalon)
@@ -211,7 +221,7 @@ class Patient {
 }
 
 function saludar(usuario) {
-  patientFormWelcome.innerHTML = `Bienvenido ${usuario}`
+  patientFormWelcome.innerHTML = `Hola ${usuario}`
 }
 
 function sumarPaciente() {
@@ -239,8 +249,9 @@ function validarCampos() {
     patientFormInputGender.value.length === 0 || patientFormInputAge.value.length === 0) {
     Swal.fire({
       heightAuto: false,
-      icon: 'error',
-      title: 'llene todos los campos'
+      icon: 'warning',
+      title: 'llene todos los campos',
+      timer: 2000
     })
   }
   else {
@@ -394,11 +405,9 @@ function analisysListFalse(array) {
 }
 
 talonBtnAddPatient.addEventListener("click", () => {
-  patientForm.reset();
   cambiarEstado(talonContainer, patientFormContainer)
   analisysListFalse(analisisDB)
   console.log(patientDB)
-  analisisSumados = []
   patientFormBtnNext.classList.remove("d-none")
   talonBtnAddPatient.classList.add("d-none")
 })
@@ -425,15 +434,37 @@ function cerrarSession() {
   patientListBtn.classList.remove("d-none")
   patientFormBtn.classList.add("d-none")
   patientListContainer.classList.add("d-none")
+  analisysBtnFinish.classList.add("d-none")
+  analysisBtnBack.classList.add("d-none")
+  patientFormBtnNext.classList.remove("d-none")
   patientForm.reset();
 
 }
 
 analisysBtnFinish.addEventListener("click", () => {
-  sumarPaciente()
-  analysisBtnBack.classList.add("d-none")
-  analisysBtnFinish.classList.add("d-none")
-  talonBtnAddPatient.classList.remove("d-none")
+  if (analisisSumados == 0) {
+    Swal.fire({
+      heightAuto: false,
+      icon: 'warning',
+      title: 'agregue almenos un analisis',
+      timer: 2000
+    })
+  } else {
+    sumarPaciente()
+    analysisBtnBack.classList.add("d-none")
+    analisysBtnFinish.classList.add("d-none")
+    talonBtnAddPatient.classList.remove("d-none")
+    patientForm.reset()
+    analisisSumados = []
+    analisysListFalse(analisisDB)
+    console.log(analisisSumados)
+    Swal.fire({
+      heightAuto: false,
+      icon: 'success',
+      title: 'paciente agregado',
+      timer: 2000
+    })
+  }
 })
 
 
