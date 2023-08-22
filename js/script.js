@@ -268,23 +268,25 @@ patientFormBtnNext.addEventListener("click", (e) => {
 })
 
 /////////Funciones de Analisis/////////
-
-const urlArchivoJSON = new Request("analisis.json");
 let analisisDB = []
-fetch(urlArchivoJSON)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error al conseguir los datos.');
-    }
-    return response.json();
+
+
+
+const getAnalysis = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(fetch("analisis.json"));
+    }, 100)
   })
-  .then(data => {
-    analisisDB = analisisDB.concat(data);
-    cardsAnalisis(analisisDB, analysisContainer)
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+}
+
+async function consiguiendoDatos() {
+  const respuesta = await getAnalysis()
+  analisisDB = await respuesta.json()
+  cardsAnalisis(analisisDB, analysisContainer)
+}
+
+consiguiendoDatos()
 
 let analisisSumados = []
 
