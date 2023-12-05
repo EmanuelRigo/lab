@@ -33,6 +33,7 @@ const patientListBtn = document.getElementById("patientListBtn")
 const patientFormBtn = document.getElementById("patientFormBtn")
 const signOff = document.getElementById("signOff")
 
+const sinPacientes = document.getElementById("sinPacientes")
 
 function toCapitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
@@ -66,6 +67,12 @@ function numberToWords(number) {
 
 function listaPacientes(array, container) {
   container.innerHTML = ""
+  if (array.length === 0) {
+    console.log("no hay pacientes")
+    let patientItem = document.createElement("div");
+    patientItem.innerHTML =  ` <div>no hay pacientes</div> ` 
+    container.append(patientItem);
+  } else {
   for (item of array) {
     let patientItem = document.createElement("div");
     patientItem.className = "accordion-item"
@@ -89,7 +96,7 @@ function listaPacientes(array, container) {
         item1.append(itemP)
       }
     }
-  }
+  }}
 }
 
 patientListBtn.addEventListener("click", () => {
@@ -111,6 +118,7 @@ patientFormBtn.addEventListener("click", () => {
   cambiarEstado(patientFormContainer, patientListContainer)
   cambiarEstado(patientFormBtn, patientListBtn)
   patientFormBtnNext.classList.remove("d-none")
+
 })
 
 const usersDB = [{
@@ -158,8 +166,13 @@ accesBtn.addEventListener('click', (e) => {
     Swal.fire({
       heightAuto: false,
       icon: 'error',
-      title: 'por favor llene todos los campos',
-      timer: 2000
+      title: 'Por favor llene todos los campos',
+      timer: 2000,
+      backdrop: false,
+      customClass: {
+        popup: 'my-custom-popup-class'
+      }
+
     })
   } else {
     let data = validarUsuario(usersDB, accesInputEmail.value, accesInputPassword.value)
@@ -168,20 +181,43 @@ accesBtn.addEventListener('click', (e) => {
       Swal.fire({
         heightAuto: false,
         icon: 'error',
-        title: 'mail o contraseña incorrectos',
+        title: 'Mail o contraseña incorrectos',
         timer: 2000
       })
     } else {
       if (accesCheckSession.checked) {
-        alert("ingreso exitoso")
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Ingreso exitoso",
+          showConfirmButton: false,
+          timer: 2500,
+          backdrop: false,
+           customClass: {
+    popup: 'my-custom-popup-class'
+  }
+        });
+
         cambiarEstado(acces, formPatientAnalisisTalon)
         guardarUsuario(data, localStorage)
         saludar(recuperarUsuario(localStorage).name)
+ 
       } else {
-        alert("ingreso exitoso")
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Ingreso exitoso",
+          showConfirmButton: false,
+          timer: 2500,
+          backdrop: false,
+           customClass: {
+    popup: 'my-custom-popup-class'
+  }
+        });
         cambiarEstado(acces, formPatientAnalisisTalon)
         guardarUsuario(data, sessionStorage)
         saludar(recuperarUsuario(sessionStorage).name)
+        
       }
     }
   }
@@ -241,18 +277,34 @@ function sumarPaciente() {
   talonPaciente(talon)
 }
 
+patientFormInputMail.addEventListener('input', function() {
+
+  if (this.value.includes('e')) {
+    this.value = this.value.replace('e', '');
+  }
+});
+
 function validarCampos() {
   if (patientFormInputName.value.length === 0 ||
     patientFormInputSurame.value.length === 0 ||
     patientFormInputDni.value.length === 0 ||
     patientFormInputMail.value.length === 0 ||
     patientFormInputGender.value.length === 0 || patientFormInputAge.value.length === 0) {
+      
+  
+
     Swal.fire({
       heightAuto: false,
       icon: 'warning',
-      title: 'llene todos los campos',
-      timer: 2000
-    })
+      title: 'Llene todos los campos',
+      timer: 2500,
+      showConfirmButton: false,
+      backdrop: false,
+      customClass: {
+        popup: 'my-custom-popup-class'
+      }
+    })  
+    
   }
   else {
     cambiarEstado(patientFormContainer, analisys)
@@ -448,7 +500,7 @@ analisysBtnFinish.addEventListener("click", () => {
     Swal.fire({
       heightAuto: false,
       icon: 'warning',
-      title: 'agregue almenos un analisis',
+      title: 'Agregue almenos un analisis',
       timer: 2000
     })
   } else {
@@ -463,8 +515,13 @@ analisysBtnFinish.addEventListener("click", () => {
     Swal.fire({
       heightAuto: false,
       icon: 'success',
-      title: 'paciente agregado',
-      timer: 2000
+      title: 'Paciente agregado',
+      timer: 2500,
+      backdrop: false,
+      customClass: {
+        popup: 'my-custom-popup-class'
+      }
+
     })
   }
 })
