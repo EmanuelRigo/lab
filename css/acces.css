@@ -246,6 +246,12 @@ body {
 .margin40 {
   margin: 40px;
 }
+.padding-tabla{
+  padding: 0;
+}
+.btn-acces{
+  display: flex;
+}
 
 @media screen and (max-width: 1200px) {
   .radius-celeste {

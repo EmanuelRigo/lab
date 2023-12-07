@@ -411,10 +411,10 @@ function talonPaciente(container) {
     identificador de analisis #${patientDB.length + patientDB[patientDB.length - 1].dni}
   </div>
     <h5 class="talon__name">${patientDB[patientDB.length - 1].name + ' ' + patientDB[patientDB.length - 1].surname}</h5>
-    <p>genero: ${patientDB[patientDB.length - 1].gender} </p>
+    <p>Genero: ${patientDB[patientDB.length - 1].gender} </p>
     <p>Edad: ${patientDB[patientDB.length - 1].age}</p>
-    <p class="card-text">dni: ${patientDB[patientDB.length - 1].dni}</p>
-    <p>tel: ${patientDB[patientDB.length - 1].tel}</p>
+    <p class="card-text">Dni: ${patientDB[patientDB.length - 1].dni}</p>
+    <p>Tel: ${patientDB[patientDB.length - 1].tel}</p>
   </div>
   <div class="col-md-6">
     <table class="talon-table table caption-top">
@@ -427,9 +427,10 @@ function talonPaciente(container) {
       </thead>
       <tbody id="talon__tbody">
       </tbody>
-      <thead>
+      <thead class="padding-tabla">
       <tr class="table-secondary">
-        <th scope="col">total</th>
+        br
+        <th scope="col">Total</th>
         <th scope="col">${diasTotal} </th>
         <th scope="col">${precioTotal} </th>
       </tr>
