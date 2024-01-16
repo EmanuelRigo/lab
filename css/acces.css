@@ -4,22 +4,22 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.second-body {
+/* .second-body {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.radius-celeste {
+ */
+/* .radius-celeste {
   background-color: #97d4f3;
   border-radius: 20px;
   padding: 40px;
   max-width: 1600px;
   min-height: 600px;
   box-sizing: border-box;
-}
+} */
 
 /*/////////PATIENT-FORM/////////*/
 
@@ -196,7 +196,6 @@ body {
   justify-content: space-evenly;
   align-items: center;
   box-sizing: border-box;
-  width: 175px;
 }
 
 .btns-lab__top i {

@@ -36,20 +36,16 @@
     <link rel="stylesheet" href="css/acces.css" />
   </head>
   <body>
-    <div class="second-body container">
+    <div class="container h-100 d-flex flex-column justify-content-center">
       <!--acces-->
-      <div class="row">
-        <div class="col d-none d-md-block">
-          <h2 class="display-3">Bienvenido al laboratorio</h2>
+      <div id="acces" class="row">
+        <div
+          class="col d-none d-lg-flex justify-content-center align-items-center"
+        >
+          <h2 class="display-3 text-center">Bienvenido al laboratorio</h2>
         </div>
-        <div class="col rounded bg-success">
+        <div class="col rounded bg-primary p-5">
           <h3 class="display-3">iniciar sesion</h3>
-        </div>
-      </div>
-
-      <div id="acces" class="radius-celeste row">
-        <div class="col">
-          <h1 class="display-3">Bienvenido al laboratorio</h1>
           <form>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Usuario</label>
@@ -94,12 +90,144 @@
 
       <!--formulario-paciente-->
 
-      <div id="formPatientAnalisisTalon" class="d-none row radius-celeste">
-        <!--formulario-paciente-->
-        <div
-          id="patientFormContainer"
-          class="col-md-10 patient-form__container"
-        >
+      <div
+        id="formPatientAnalisisTalon"
+        class="d-none row bg-primary p-0 p-md-5 rounded"
+      >
+        <div id="patientFormContainer" class="col-lg-10">
+          <div class="row">
+            <div class="col">
+              <div>
+                <h2 id="patientFormWelcome"></h2>
+                <h3>por favor ingrese los datos del paciente</h3>
+              </div>
+            </div>
+          </div>
+          <form class="row">
+            <div class="col-lg-6">
+              <label for="patientFormInputName" class="form-label"
+                >Nombre completo</label
+              >
+              <input
+                type="text"
+                class="form-control patient-form_input"
+                id="patientFormInputName"
+                required
+              />
+              <label for="patientFormInputSurname" class="form-label"
+                >Apellido</label
+              >
+              <input
+                type="text"
+                class="form-control patient-form_input"
+                id="patientFormInputSurname"
+                required
+              />
+              <label for="patientFormInputDni" class="form-label">DNI</label>
+              <input
+                type="number"
+                class="form-control patient-form_input"
+                id="patientFormInputDni"
+                aria-describedby="inputGroupPrepend"
+                required
+              />
+            </div>
+            <div class="col-lg-6">
+              <label for="patientFormInputMail" class="form-label">Tel</label>
+              <input
+                type="number"
+                class="form-control patient-form_input"
+                id="patientFormInputMail"
+                required
+              />
+
+              <label for="patientFormInputGender" class="form-label"
+                >Genero</label
+              >
+              <select
+                class="form-select patient-form_input"
+                id="patientFormInputGender"
+                required
+              >
+                <option selected disabled value="">defecto...</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+              </select>
+
+              <label for="patientFormInputAge" class="form-label">Edad</label>
+              <input
+                type="number"
+                class="form-control patient-form_input"
+                id="patientFormInputAge"
+                required
+              />
+            </div>
+          </form>
+        </div>
+
+        <div id="analisys" class="col-lg-10 d-none analysis__container">
+          <div id="analysisContainer" class="analysis__grid-container"></div>
+        </div>
+        <div class="btns-lab__container col-lg-2">
+          <div class="btns-lab__top">
+            <button
+              class="patient-form__btn btn btn-primary d-none"
+              type="btn"
+              id="patientFormBtn"
+            >
+              Inicio
+            </button>
+            <button
+              class="patient-form__btn btn btn-primary"
+              type="btn"
+              id="patientListBtn"
+            >
+              <i class="bi bi-person-lines-fill"></i>
+            </button>
+            <button
+              class="patient-form__btn btn btn-primary d-none"
+              type="submit"
+              id="talonBtnAddPatient"
+            >
+              <i class="bi bi-person-plus-fill"></i>
+            </button>
+            <button
+              class="patient-form__btn btn btn-primary"
+              type="submit"
+              id="patientFormBtnNext"
+            >
+              <i class="bi bi-arrow-right-short"></i>
+            </button>
+            <button
+              id="analysisBtnFinish"
+              type="button"
+              class="analysis__btn btn btn-success d-none"
+            >
+              <i class="bi bi-check2"></i>
+            </button>
+            <button
+              id="analysisBtnBack"
+              type="button"
+              class="analysis__btn btn btn-success d-none"
+            >
+              <i class="bi bi-arrow-left-short"></i>
+            </button>
+          </div>
+          <div class="btns-lab__bottom">
+            <button class="btn-lab btn btn-primary">
+              <a class="bi bi-box-arrow-left" href="index.html"></a>
+            </button>
+            <button class="btn-lab btn btn-primary" type="button" id="signOff">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--formulario-paciente-2-->
+
+<!--       <div class="d-none row radius-celeste">
+        <div class="col-md-10 patient-form__container">
           <div>
             <h2 id="patientFormWelcome"></h2>
             <h3>por favor ingrese los datos del paciente</h3>
@@ -166,11 +294,11 @@
             </div>
           </form>
         </div>
-
+ -->
         <!--analisis-->
-        <div id="analisys" class="col-md-10 d-none analysis__container">
+<!--         <div id="analisys" class="col-md-10 d-none analysis__container">
           <div id="analysisContainer" class="analysis__grid-container"></div>
-        </div>
+        </div> -->
 
         <!--talon-->
         <div id="talonContainer" class="talon__container d-none">
@@ -188,60 +316,6 @@
         </div>
 
         <!--Botones-->
-        <div class="btns-lab__container col-md-2">
-          <div class="btns-lab__top">
-            <button
-              class="patient-form__btn btn btn-primary d-none"
-              type="btn"
-              id="patientFormBtn"
-            >
-              Inicio
-            </button>
-            <button
-              class="patient-form__btn btn btn-primary"
-              type="btn"
-              id="patientListBtn"
-            >
-              <i class="bi bi-person-lines-fill"></i>
-            </button>
-            <button
-              class="patient-form__btn btn btn-primary d-none"
-              type="submit"
-              id="talonBtnAddPatient"
-            >
-              <i class="bi bi-person-plus-fill"></i>
-            </button>
-            <button
-              class="patient-form__btn btn btn-primary"
-              type="submit"
-              id="patientFormBtnNext"
-            >
-              <i class="bi bi-arrow-right-short"></i>
-            </button>
-            <button
-              id="analysisBtnFinish"
-              type="button"
-              class="analysis__btn btn btn-success d-none"
-            >
-              <i class="bi bi-check2"></i>
-            </button>
-            <button
-              id="analysisBtnBack"
-              type="button"
-              class="analysis__btn btn btn-success d-none"
-            >
-              <i class="bi bi-arrow-left-short"></i>
-            </button>
-          </div>
-          <div class="btns-lab__bottom">
-            <button class="btn-lab btn btn-primary">
-              <a class="bi bi-box-arrow-left" href="index.html"></a>
-            </button>
-            <button class="btn-lab btn btn-primary" type="button" id="signOff">
-              <i class="bi bi-x-lg"></i>
-            </button>
-          </div>
-        </div>
       </div>
     </div>
 
