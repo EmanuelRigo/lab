@@ -93,18 +93,22 @@
         class="d-none row mq-vh bg-primary p-0 p-md-5 rounded"
       >
         <!--patient-form-->
-        <div id="patientFormContainer" class="col-lg-10">
+        <div id="patientFormContainer" class="col-lg-10 pt-4 p-lg-0">
           <div class="row">
             <div class="col">
               <div>
-                <h2 id="patientFormWelcome"></h2>
-                <h3>por favor ingrese los datos del paciente</h3>
+                <h2 id="patientFormWelcome" class="text-light"></h2>
+                <h3 class="text-light">
+                  por favor ingrese los datos del paciente
+                </h3>
               </div>
             </div>
           </div>
           <form class="row">
             <div class="col-lg-6">
-              <label for="patientFormInputName" class="form-label"
+              <label
+                for="patientFormInputName"
+                class="form-label text-light mt-1"
                 >Nombre completo</label
               >
               <input
@@ -113,7 +117,9 @@
                 id="patientFormInputName"
                 required
               />
-              <label for="patientFormInputSurname" class="form-label"
+              <label
+                for="patientFormInputSurname"
+                class="form-label text-light mt-1"
                 >Apellido</label
               >
               <input
@@ -122,7 +128,11 @@
                 id="patientFormInputSurname"
                 required
               />
-              <label for="patientFormInputDni" class="form-label">DNI</label>
+              <label
+                for="patientFormInputDni"
+                class="form-label text-light mt-1"
+                >DNI</label
+              >
               <input
                 type="number"
                 class="form-control patient-form_input"
@@ -132,7 +142,11 @@
               />
             </div>
             <div class="col-lg-6">
-              <label for="patientFormInputMail" class="form-label">Tel</label>
+              <label
+                for="patientFormInputMail"
+                class="form-label text-light mt-1"
+                >Tel</label
+              >
               <input
                 type="number"
                 class="form-control patient-form_input"
@@ -140,7 +154,9 @@
                 required
               />
 
-              <label for="patientFormInputGender" class="form-label"
+              <label
+                for="patientFormInputGender"
+                class="form-label text-light mt-1"
                 >Genero</label
               >
               <select
@@ -148,12 +164,16 @@
                 id="patientFormInputGender"
                 required
               >
-                <option selected disabled value="">defecto...</option>
+                <option selected disabled value="">Seleccione un genero</option>
                 <option>Masculino</option>
                 <option>Femenino</option>
               </select>
 
-              <label for="patientFormInputAge" class="form-label">Edad</label>
+              <label
+                for="patientFormInputAge"
+                class="form-label text-light mt-1"
+                >Edad</label
+              >
               <input
                 type="number"
                 class="form-control patient-form_input"
@@ -164,21 +184,27 @@
           </form>
         </div>
         <!--analysis-->
-        <div id="analisys" class="col-lg-10 d-none">
+        <div id="analisys" class="col-lg-10 d-none mt-3">
           <div
             id="analysisContainer"
-            class="analysis__grid-container row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3"
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4"
           ></div>
         </div>
         <!--talon-->
-        <div id="talonContainer" class="talon__container d-none">
-          <div id="talon" class="talon"></div>
+        <div
+          id="talonContainer"
+          class="talon__container col-lg-10 mt-3 mt-lg-0 d-none overflow-hidden"
+        >
+          <div id="talon" class="talon rounded bg-light p-3"></div>
         </div>
         <!--list-->
-        <div id="patientListContainer" class="patient-list__container d-none">
-          <div id="patientList" class="col-md-12 patient-list">
+        <div
+          id="patientListContainer"
+          class="patient-list__container col-lg-10 mt-3 mt-lg-0 d-none overflow-hidden"
+        >
+          <div id="patientList" class="col-md-12 rounded patient-list">
             <div
-              class="accordion accordion-flush"
+              class="accordion rounded overflow-hidden accordion-flush"
               id="accordionFlushExample"
             ></div>
           </div>
@@ -246,82 +272,6 @@
         </div>
       </div>
     </div>
-    <!--formulario-paciente-2-->
-
-    <!--       <div class="d-none row radius-celeste">
-        <div class="col-md-10 patient-form__container">
-          <div>
-            <h2 id="patientFormWelcome"></h2>
-            <h3>por favor ingrese los datos del paciente</h3>
-          </div>
-
-          <form id="patientForm" class="row g-3 needs-validation" novalidate>
-            <div class="col-md-6">
-              <label for="patientFormInputName" class="form-label"
-                >Nombre completo</label
-              >
-              <input
-                type="text"
-                class="form-control patient-form_input"
-                id="patientFormInputName"
-                required
-              />
-              <label for="patientFormInputSurname" class="form-label"
-                >Apellido</label
-              >
-              <input
-                type="text"
-                class="form-control patient-form_input"
-                id="patientFormInputSurname"
-                required
-              />
-              <label for="patientFormInputDni" class="form-label">DNI</label>
-              <input
-                type="number"
-                class="form-control patient-form_input"
-                id="patientFormInputDni"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label for="patientFormInputMail" class="form-label">Tel</label>
-              <input
-                type="number"
-                class="form-control patient-form_input"
-                id="patientFormInputMail"
-                required
-              />
-
-              <label for="patientFormInputGender" class="form-label"
-                >Genero</label
-              >
-              <select
-                class="form-select patient-form_input"
-                id="patientFormInputGender"
-                required
-              >
-                <option selected disabled value="">defecto...</option>
-                <option>Masculino</option>
-                <option>Femenino</option>
-              </select>
-
-              <label for="patientFormInputAge" class="form-label">Edad</label>
-              <input
-                type="number"
-                class="form-control patient-form_input"
-                id="patientFormInputAge"
-                required
-              />
-            </div>
-          </form>
-        </div>
- -->
-    <!--analisis-->
-    <!--         <div id="analisys" class="col-md-10 d-none analysis__container">
-          <div id="analysisContainer" class="analysis__grid-container"></div>
-        </div> -->
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js"></script>
   </body>

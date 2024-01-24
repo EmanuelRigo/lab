@@ -134,22 +134,26 @@ body {
 
 /*/////////CSS TALON/////////*/
 
-.talon__container {
+/* .talon__container {
   padding: 0;
   width: 790px;
 }
+ */
 
+.talon_card {
+  height: 100%;
+}
 .talon__container td {
   padding: 3px;
   font-size: 17px;
 }
 
-.talon {
+/* .talon {
   padding: 25px;
   background: whitesmoke;
   border-radius: 10px;
   height: 524px;
-}
+} */
 
 .talon__number-id {
   padding-bottom: 10px;
@@ -168,18 +172,15 @@ body {
 }
 
 /*/////////CSS PATIENT-LIST/////////*/
-
-.patient-list__container {
-  width: 790px;
+/* .patient-list__container {
   overflow: auto;
   height: 524px;
-  padding-left: 0;
-}
+} */
 
-.patient-list {
+/* .patient-list {
   border-radius: 15px;
   overflow: hidden;
-}
+} */
 
 .accordion-body p {
   font-weight: 300;
@@ -260,8 +261,44 @@ body {
 }
  */
 
+/*//////////*/
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.analysis__card-btn {
+  width: 100%;
+}
+
+#analysisContainer i {
+  font-size: 1.5rem;
+}
+
+#analysisContainer p {
+  margin: 0;
+}
+
+.talon {
+  overflow: auto;
+  height: 100%;
+}
+
+.patient-list {
+  overflow: auto;
+  height: 100%;
+}
+
 @media screen and (max-width: 576px) {
   .mq-vh {
     height: 100%;
+  }
+
+  .talon__container {
+    height: 75vh;
+  }
+
+  .patient-list__container {
+    height: 75vh;
   }
 }

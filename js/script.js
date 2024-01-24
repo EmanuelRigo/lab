@@ -392,24 +392,22 @@ function cardsAnalisis(array, container) {
 
   for (item of array) {
     let card = document.createElement("div");
-    card.className = "col";
+    card.className = "col p-0 ";
     card.id = item.nombre;
-    card.innerHTML = `<div class="row ${
-      item.agregado == false ? "" : "analysis__card-titulo-agregado"
-    }"> 
-    <div class="col-6 col-md-12 d-flex align-items-center"><h6 class="m-0 my-md-3 ">${
-      item.nombre
-    } </h6></div>
-    <div class="col-5 bg-danger col-md-12 d-flex d-lg-block"> <p class="px-1 p-md-0"> <span class="d-none d-lg-block">precio: </span>$${
+    card.innerHTML = `<div class="p-1 p-lg-2 "><div class="row bg-light overflow-hidden rounded m-0 "> 
+    <div class="col-6 col-md-12 d-flex align-items-center rounded ${
+      item.agregado == false ? "bg-warning " : "analysis__card-titulo-agregado "
+    }"><h6 class="m-0 my-md-3 ">${item.nombre} </h6></div>
+    <div class="col-5  p-0 p-md-3 col-md-12 d-flex align-items-center d-lg-block"> <p class="px-1 p-md-0"> <span class="d-none d-lg-inline-block">precio:</span> $${
       item.precio
     } </p> <p>dias: ${item.tiempo} </p></div>
-    <div class="col-1 bg-warning col-md-12"><button type="button" data-filter="${
+    <div class="col-1 col-md-12 d-flex px-0"><button type="button" data-filter="${
       item.nombre
-    }" class="analysis__card-btn">${
+    }" class="analysis__card-btn btn btn-success d-flex p-0 d-flex align-items-center justify-content-center">${
       item.agregado == false
-        ? `<span class="d-none d-lg-block">agregar</span> <i class="bi bi-clipboard-plus"></i>`
-        : `<span class="d-none d-lg-block">remover</span> <i class="bi bi-clipboard-x"></i>`
-    } </button</div>`;
+        ? `<span class="d-none d-lg-block px-2">agregar</span> <i class="bi bi-clipboard-plus"></i>`
+        : `<span class="d-none d-lg-block px-2">remover</span> <i class="bi bi-clipboard-x"></i>`
+    } </button</div></div>`;
     container.append(card);
   }
   /*   for (item of array) {
@@ -510,7 +508,6 @@ function talonPaciente(container) {
       </tbody>
       <thead class="padding-tabla">
       <tr class="table-secondary">
-        br
         <th scope="col">Total</th>
         <th scope="col">${diasTotal} </th>
         <th scope="col">${precioTotal} </th>
