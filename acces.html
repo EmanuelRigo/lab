@@ -45,22 +45,24 @@
           <h2 class="display-3 text-center">Bienvenido al laboratorio</h2>
         </div>
         <div class="col rounded bg-primary p-5">
-          <h3 class="display-3">iniciar sesion</h3>
+          <h3 class="display-3 text-light">iniciar sesion</h3>
           <form>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Usuario</label>
+              <label for="exampleInputEmail1" class="form-label text-light"
+                >Usuario</label
+              >
               <input
                 type="text"
                 class="form-control"
                 id="accesInputEmail"
                 aria-describedby="emailHelp"
               />
-              <div id="emailHelp" class="form-text">
+              <div id="emailHelp" class="form-text text-light">
                 El usuario es para el personal del laboratorio.
               </div>
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label"
+              <label for="exampleInputPassword1" class="form-label text-light"
                 >Contraseña</label
               >
               <input
@@ -75,7 +77,7 @@
                 class="form-check-input"
                 id="accesCheckSession"
               />
-              <label class="form-check-label" for="exampleCheck1"
+              <label class="form-check-label text-light" for="exampleCheck1"
                 >Mantener sesión</label
               >
             </div>
@@ -104,7 +106,7 @@
               </div>
             </div>
           </div>
-          <form class="row">
+          <form id="patientForm" class="row">
             <div class="col-lg-6">
               <label
                 for="patientFormInputName"
@@ -210,10 +212,10 @@
           </div>
         </div>
         <!--btns-->
-        <div class="btns-lab__container col-lg-2 mt-4">
-          <div class="row flex-lg-column">
+        <div class="btns-lab__container d-flex align-items-end col-lg-2 mt-4">
+          <div class="col d-flex mb-3 flex-lg-column align-items-center">
             <div
-              class="btns-lab__top col-10 d-flex justify-content-evenly flex-lg-column"
+              class="btns-lab__top col-10 d-flex justify-content-start align-items-center flex-lg-column"
             >
               <button
                 class="patient-form__btn btn btn-primary d-none"
@@ -246,20 +248,20 @@
               <button
                 id="analysisBtnFinish"
                 type="button"
-                class="analysis__btn btn btn-success d-none"
+                class="patient-form__btn btn btn-primary d-none"
               >
                 <i class="bi bi-check2"></i>
               </button>
               <button
                 id="analysisBtnBack"
                 type="button"
-                class="analysis__btn btn btn-success d-none"
+                class="patient-form__btn btn btn-primary d-none"
               >
                 <i class="bi bi-arrow-left-short"></i>
               </button>
             </div>
             <div
-              class="btns-lab__bottom bg-light rounded justify-content-evenly d-flex flex-column flex-lg-row col-2 col-lg-10 mx-auto mt-0 mt-lg-4 p-2"
+              class="btns-lab__bottom rounded justify-content-evenly d-flex flex-column flex-lg-row col-2 col-lg-10 mx-auto mt-0 mt-lg-4 p-2"
             >
               <button class="btn btn-primary">
                 <a class="bi bi-box-arrow-left" href="index.html"></a>

@@ -187,16 +187,16 @@ body {
 }
 
 /*/////////CSS BTN-LABS/////////*/
-.btns-lab__container {
+/* .btns-lab__container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   box-sizing: border-box;
-}
+} */
 
 .btns-lab__top i {
-  font-size: 55px;
+  font-size: 2rem;
 }
 
 .btns-lab__bottom a {
@@ -214,8 +214,8 @@ body {
 } */
 
 .patient-form__btn {
-  height: 120px;
-  width: 120px;
+  height: 7rem;
+  width: 7rem;
   border-radius: 50%;
   border: 4px solid whitesmoke;
   margin: 5px;
@@ -300,5 +300,19 @@ body {
 
   .patient-list__container {
     height: 75vh;
+  }
+
+  .patient-form__btn {
+    height: 5.5rem;
+    width: 5.5rem;
+  }
+
+  .btns-lab__top i {
+    font-size: 3rem;
+  }
+
+  .analysis__btn {
+    height: 5.5rem;
+    width: 5.5rem;
   }
 }

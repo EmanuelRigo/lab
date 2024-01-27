@@ -117,7 +117,8 @@ function listaPacientes(array, container) {
   if (array.length === 0) {
     console.log("no hay pacientes");
     let patientItem = document.createElement("div");
-    patientItem.innerHTML = ` <div>no hay pacientes</div> `;
+    patientItem.innerHTML = ` <div class="col-lg-10 bg-light rounded p-3">
+    <h3 class="m-0">no hay pacientes</h3></div> `;
     container.append(patientItem);
   } else {
     for (item of array) {
@@ -394,10 +395,12 @@ function cardsAnalisis(array, container) {
     let card = document.createElement("div");
     card.className = "col p-0 ";
     card.id = item.nombre;
-    card.innerHTML = `<div class="p-1 p-lg-2 "><div class="row bg-light overflow-hidden rounded m-0 "> 
+    card.innerHTML = `<div class="p-1 p-lg-2 "><div class="row p-1 bg-light overflow-hidden rounded m-0 "> 
     <div class="col-6 col-md-12 d-flex align-items-center rounded ${
-      item.agregado == false ? "bg-warning " : "analysis__card-titulo-agregado "
-    }"><h6 class="m-0 my-md-3 ">${item.nombre} </h6></div>
+      item.agregado == false
+        ? "bg-primary  "
+        : "analysis__card-titulo-agregado "
+    }"><h6 class="m-0 my-md-3 text-light">${item.nombre} </h6></div>
     <div class="col-5  p-0 p-md-3 col-md-12 d-flex align-items-center d-lg-block"> <p class="px-1 p-md-0"> <span class="d-none d-lg-inline-block">precio:</span> $${
       item.precio
     } </p> <p>dias: ${item.tiempo} </p></div>
@@ -572,7 +575,7 @@ function cerrarSession() {
 }
 
 analisysBtnFinish.addEventListener("click", () => {
-  if (analisisSumados == 0) {
+  if (analisisSumados.length == 0) {
     Swal.fire({
       heightAuto: false,
       icon: "warning",
@@ -585,7 +588,9 @@ analisysBtnFinish.addEventListener("click", () => {
     analisysBtnFinish.classList.add("d-none");
     talonBtnAddPatient.classList.remove("d-none");
     patientForm.reset();
+    console.log(analisisSumados);
     analisisSumados = [];
+    console.log(analisisSumados);
     analisysListFalse(analisisDB);
     console.log(analisisSumados);
     Swal.fire({

@@ -42,11 +42,11 @@ header hr {
   color: black;
 }
 
-.carousel-item img {
+/* .carousel-item img {
   border-radius: 50px;
   border: #97d4f3 solid 4px;
 }
-
+ */
 .columna {
   padding: 20px;
   display: flex;
@@ -121,11 +121,26 @@ footer {
 .margin40 {
   margin: 40px;
 }
+
+/*////////////*/
+
+.custom-border-radius {
+  border-radius: 50px;
+}
+
+.custom-border-color {
+  border: #97d4f3 solid 4px;
+}
+
+.bg-custom-light-blue {
+  background-color: #97d4f3;
+}
+
 /* ///////boton arriba////// */
 .go-top-container {
   position: fixed;
-  bottom: 4rem;
-  right: 4rem;
+  bottom: 0;
+  right: 0rem;
   width: 6.6rem;
   height: 6.6rem;
   z-index: -1;
@@ -190,5 +205,10 @@ footer {
     border-radius: 75px;
     justify-content: space-evenly;
     text-align: center;
+  }
+
+  .show .go-top-buttom {
+    width: 4rem;
+    height: 4rem;
   }
 }
