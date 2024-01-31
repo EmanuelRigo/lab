@@ -1,3 +1,5 @@
+import { getAnalysis2 } from "./firebase.js";
+
 const accesInputEmail = document.getElementById("accesInputEmail");
 const accesInputPassword = document.getElementById("accesInputPassword");
 const accesCheckSession = document.getElementById("accesCheckSession");
@@ -121,7 +123,7 @@ function listaPacientes(array, container) {
     <h3 class="m-0">no hay pacientes</h3></div> `;
     container.append(patientItem);
   } else {
-    for (item of array) {
+    for (let item of array) {
       let patientItem = document.createElement("div");
       patientItem.className = "accordion-item";
       patientItem.innerHTML = `  <div class="accordion-item">
@@ -143,8 +145,8 @@ function listaPacientes(array, container) {
       container.append(patientItem);
 
       const itemAnalysis = document.getElementsByName(item.id);
-      for (item1 of itemAnalysis) {
-        for (item2 of item.analysis) {
+      for (let item1 of itemAnalysis) {
+        for (let item2 of item.analysis) {
           const itemP = document.createElement("p");
           itemP.innerHTML = `${item2.nombre}`;
           item1.append(itemP);
@@ -368,30 +370,37 @@ patientFormBtnNext.addEventListener("click", (e) => {
 });
 
 /////////Funciones de Analisis/////////
-let analisisDB = [];
 
-const getAnalysis = () => {
+/* const getAnalysis = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(fetch("analisis.json"));
     }, 100);
   });
-};
+}; */
 
-async function consiguiendoDatos() {
+/* async function consiguiendoDatos() {
   const respuesta = await getAnalysis();
   analisisDB = await respuesta.json();
   cardsAnalisis(analisisDB, analysisContainer);
 }
 
-consiguiendoDatos();
+consiguiendoDatos(); */
+
+let analysisDB = [];
+
+window.addEventListener("DOMContentLoaded", async () => {
+  analysisDB = await getAnalysis2();
+  console.log(getAnalysis2());
+  console.log(analysisDB);
+  cardsAnalisis(analysisDB, analysisContainer);
+});
 
 let analisisSumados = [];
 
 function cardsAnalisis(array, container) {
   container.innerHTML = "";
-
-  for (item of array) {
+  for (let item of array) {
     let card = document.createElement("div");
     card.className = "col p-0 ";
     card.id = item.nombre;
@@ -413,28 +422,6 @@ function cardsAnalisis(array, container) {
     } </button</div></div>`;
     container.append(card);
   }
-  /*   for (item of array) {
-    let card = document.createElement("div");
-    card.className = "analysis__card";
-    card.id = item.nombre;
-    card.innerHTML = `  <div class="analysis__card-titulo ${
-      item.agregado == false ? "" : "analysis__card-titulo-agregado"
-    }">
-    <h5>${item.nombre} </h5>
-  </div>
-  <div>
-    <div class="analysis__card-price">
-        <p>precio: $${item.precio} </p>
-        <p>dias: ${item.tiempo} </p>
-    </div>
-    </div>
-    <button type="button" data-filter="${
-      item.nombre
-    }" class="analysis__card-btn">${
-      item.agregado == false ? "agregar" : "eliminar"
-    } </button>`;
-    container.append(card);
-  } */
 
   /********/ ///////pasar a funciones asincronas////////******/
 
@@ -447,27 +434,25 @@ function cardsAnalisis(array, container) {
   });
 
   function agregarAnalisis(analisis) {
-    if (analisis.dataset === analisisDB.nombre) {
+    if (analisis.dataset === analysisDB.nombre) {
       function isTrue(estudio) {
         return estudio.nombre === analisis;
       }
 
-      if (analisisDB.find(isTrue).agregado == true) {
-        analisisDB.find(isTrue).agregado = false;
+      if (analysisDB.find(isTrue).agregado == true) {
+        analysisDB.find(isTrue).agregado = false;
       } else {
-        analisisDB.find(isTrue).agregado = true;
+        analysisDB.find(isTrue).agregado = true;
       }
-      cardsAnalisis(analisisDB, analysisContainer);
+      cardsAnalisis(analysisDB, analysisContainer);
 
-      analisisSumados = analisisDB.filter(
+      analisisSumados = analysisDB.filter(
         (analisis) => analisis.agregado === true
       );
     } else {
       return console.log("algo salio mal");
     }
   }
-
-  ///////////////////////////////////////////////
 }
 
 /////////Funciones de Talon/////////
@@ -520,7 +505,7 @@ function talonPaciente(container) {
   </div>
 </div>`;
 
-  for (item of patientDB[patientDB.length - 1].analysis) {
+  for (let item of patientDB[patientDB.length - 1].analysis) {
     const talonThead = document.getElementById("talon__tbody");
     let trAnalysis = document.createElement("tr");
 
@@ -536,12 +521,12 @@ function analisysListFalse(array) {
   array.forEach((objeto) => {
     objeto.agregado = false;
   });
-  cardsAnalisis(analisisDB, analysisContainer);
+  cardsAnalisis(analysisDB, analysisContainer);
 }
 
 talonBtnAddPatient.addEventListener("click", () => {
   cambiarEstado(talonContainer, patientFormContainer);
-  analisysListFalse(analisisDB);
+  analisysListFalse(analysisDB);
   console.log(patientDB);
   patientFormBtnNext.classList.remove("d-none");
   talonBtnAddPatient.classList.add("d-none");
@@ -591,7 +576,7 @@ analisysBtnFinish.addEventListener("click", () => {
     console.log(analisisSumados);
     analisisSumados = [];
     console.log(analisisSumados);
-    analisysListFalse(analisisDB);
+    analisysListFalse(analysisDB);
     console.log(analisisSumados);
     Swal.fire({
       heightAuto: false,
