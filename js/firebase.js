@@ -34,6 +34,7 @@ export const getAnalysis2 = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "analysis"));
     const dataArray = querySnapshot.docs.map((doc) => doc.data());
+
     console.log("Array de datos:", dataArray);
 
     return dataArray;
@@ -43,16 +44,52 @@ export const getAnalysis2 = async () => {
   }
 };
 
-export const savePatient = (name, surname, dni, mail, gender, age, analysis) =>
-  addDoc(collection(db, "patients"), {
-    name,
-    surname,
-    dni,
-    mail,
-    gender,
-    age,
-    analysis,
+/* export function getAnalysis2() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "analysis"));
+      const dataArray = querySnapshot.docs.map((doc) => doc.data());
+
+      console.log("Array de datos:", dataArray);
+
+      resolve dataArray;
+    } catch (error) {
+      console.error("Error al obtener documentos:", error);
+      reject(error);
+    }
   });
+} */
+
+export const savePatient = async (
+  name,
+  surname,
+  dni,
+  phone,
+  gender,
+  age,
+  analysis
+) => {
+  try {
+    const docRef = await addDoc(collection(db, "patients"), {
+      name,
+      surname,
+      dni,
+      phone,
+      gender,
+      age,
+      analysis,
+    });
+
+    const idGenerado = docRef.id;
+    console.log(idGenerado);
+    return idGenerado;
+  } catch (error) {
+    console.error("Error al añadir el documento:", error);
+    throw error;
+  }
+};
+
+export const getPatient = (id) => getDoc(doc(db, "patients", id));
 
 export const onGetPatient = (callback) =>
   onSnapshot(collection(db, "patients"), callback);

@@ -1,4 +1,9 @@
-import { getAnalysis2, savePatient, onGetPatient } from "./firebase.js";
+import {
+  getAnalysis2,
+  savePatient,
+  onGetPatient,
+  getPatient,
+} from "./firebase.js";
 
 const accesInputEmail = document.getElementById("accesInputEmail");
 const accesInputPassword = document.getElementById("accesInputPassword");
@@ -16,7 +21,7 @@ const patientFormInputSurame = document.getElementById(
   "patientFormInputSurname"
 );
 const patientFormInputDni = document.getElementById("patientFormInputDni");
-const patientFormInputMail = document.getElementById("patientFormInputMail");
+const patientFormInputPhone = document.getElementById("patientFormInputPhone");
 const patientFormInputGender = document.getElementById(
   "patientFormInputGender"
 );
@@ -377,7 +382,7 @@ function sumarPaciente() {
     )
   );
   cambiarEstado(analisys, talonContainer);
-  talonPaciente(talon);
+  talonPaciente2(talon);
 }
 
 function sumarPaciente2() {
@@ -385,16 +390,23 @@ function sumarPaciente2() {
     patientFormInputName.value,
     patientFormInputSurame.value,
     patientFormInputDni.value,
-    patientFormInputMail.value,
+    patientFormInputPhone.value,
     patientFormInputGender.value,
     patientFormInputAge.value,
     analisisSumados
-  );
-  cambiarEstado(analisys, talonContainer);
-  talonPaciente(talon);
+  )
+    .then((data) => {
+      console.log("Paciente guardado:", data);
+      return getPatient(data);
+    })
+    .then((patientTicket) => {
+      console.log("ESTE ES EL PATIENT TICKET", patientTicket.data());
+      talonPaciente2(talon, patientTicket.data());
+      cambiarEstado(analisys, talonContainer);
+    });
 }
 
-patientFormInputMail.addEventListener("input", function () {
+patientFormInputPhone.addEventListener("input", function () {
   if (this.value.includes("e")) {
     this.value = this.value.replace("e", "");
   }
@@ -405,7 +417,7 @@ function validarCampos() {
     patientFormInputName.value.length === 0 ||
     patientFormInputSurame.value.length === 0 ||
     patientFormInputDni.value.length === 0 ||
-    patientFormInputMail.value.length === 0 ||
+    patientFormInputPhone.value.length === 0 ||
     patientFormInputGender.value.length === 0 ||
     patientFormInputAge.value.length === 0
   ) {
@@ -520,6 +532,60 @@ function cardsAnalisis(array, container) {
 }
 
 /////////Funciones de Talon/////////
+
+function talonPaciente2(container, patient) {
+  let precioTotal = 0;
+  const sumarPrecios = patient.analysis.map((item1) => item1.precio);
+  for (let i = 0; i < sumarPrecios.length; i++) precioTotal += sumarPrecios[i];
+
+  const cantidadDias = patient.analysis.map((item1) => item1.tiempo);
+  let diasTotal = Math.max(...cantidadDias);
+
+  container.innerHTML = "";
+  container.innerHTML = `<div class="talon_card row">
+  <div class="talon_card-body col-md-6">
+  <div class="talon__number-id">
+    identificador de analisis #${patient.dni}
+  </div>
+    <h5 class="talon__name">${patient.name + " " + patient.surname}</h5>
+    <p>Genero: ${patient.gender} </p>
+    <p>Edad: ${patient.age}</p>
+    <p class="card-text">Dni: ${patient.dni}</p>
+    <p>Tel: ${patient.phone}</p>
+  </div>
+  <div class="col-md-6">
+    <table class="talon-table table caption-top">
+      <thead>
+        <tr>
+          <th class="talon__th" scope="col">Analisis</th>
+          <th class="talon__th" scope="col">Dias</th>
+          <th class="talon__th" scope="col">Precio</th>
+        </tr>
+      </thead>
+      <tbody id="talon__tbody">
+      </tbody>
+      <thead class="padding-tabla">
+      <tr class="table-secondary">
+        <th scope="col">Total</th>
+        <th scope="col">${diasTotal} </th>
+        <th scope="col">${precioTotal} </th>
+      </tr>
+      </thead>
+    </table> 
+  </div>
+</div>`;
+
+  for (let item of patient.analysis) {
+    const talonThead = document.getElementById("talon__tbody");
+    let trAnalysis = document.createElement("tr");
+
+    trAnalysis.innerHTML = `<td>${item.nombre}</td>
+    <td>${item.tiempo}</td>
+    <td>${item.precio}</td>`;
+
+    talonThead.append(trAnalysis);
+  }
+}
 
 function talonPaciente(container) {
   let precioTotal = 0;
