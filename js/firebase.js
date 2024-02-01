@@ -30,25 +30,32 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 
-export const savePatient = (patient) =>
-  addDoc(collection(db, "patients"), { patient });
-
 export const getAnalysis2 = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "analysis"));
-
-    // Obtener un array con los datos de los documentos
     const dataArray = querySnapshot.docs.map((doc) => doc.data());
-
-    // Imprimir el array de datos
     console.log("Array de datos:", dataArray);
 
-    return dataArray; // Puedes retornar el array si es necesario
+    return dataArray;
   } catch (error) {
     console.error("Error al obtener documentos:", error);
-    throw error; // Puedes manejar el error según tus necesidades
+    throw error;
   }
 };
+
+export const savePatient = (name, surname, dni, mail, gender, age, analysis) =>
+  addDoc(collection(db, "patients"), {
+    name,
+    surname,
+    dni,
+    mail,
+    gender,
+    age,
+    analysis,
+  });
+
+export const onGetPatient = (callback) =>
+  onSnapshot(collection(db, "patients"), callback);
 
 /* 
 export const getAnalysis2 = () => getDocs(collection(db, "analysis")); */

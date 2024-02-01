@@ -1,4 +1,4 @@
-import { getAnalysis2 } from "./firebase.js";
+import { getAnalysis2, savePatient, onGetPatient } from "./firebase.js";
 
 const accesInputEmail = document.getElementById("accesInputEmail");
 const accesInputPassword = document.getElementById("accesInputPassword");
@@ -114,6 +114,56 @@ function numberToWords(number) {
   }
 }
 
+window.addEventListener("DOMContentLoaded", async () => {
+  onGetPatient((querySnapshot) => {
+    console.log(querySnapshot);
+    patientDB = querySnapshot.docs.map((doc) => doc.data());
+    console.log(patientDB);
+    if (querySnapshot.size == 0) {
+      patientItemContainer.innerHTML = "";
+      console.log("no hay pacientes");
+      let patientItem = document.createElement("div");
+      patientItem.innerHTML = ` <div class="col-lg-10 bg-light rounded p-3">
+      <h3 class="m-0">no hay pacientes</h3></div> `;
+      patientItemContainer.append(patientItem);
+    } else {
+      patientItemContainer.innerHTML = "";
+      querySnapshot.forEach((doc) => {
+        const patient = doc.data();
+
+        let patientItem = document.createElement("div");
+        patientItem.className = "accordion-item";
+        patientItem.innerHTML = `  <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${
+          doc.id
+        }" aria-expanded="false" aria-controls="flush-collapse${doc.id}">
+          ${patient.name + " " + patient.surname}
+        </button>
+      </h2>
+      <div id="flush-collapse${
+        doc.id
+      }" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div name="${doc.id}" class="accordion-body"></div>
+      </div>
+    </div>`;
+        patientItemContainer.append(patientItem);
+
+        const itemAnalysis = document.getElementsByName(doc.id);
+        console.log(itemAnalysis);
+        itemAnalysis.forEach((item) => {
+          for (let item1 of patient.analysis) {
+            console.log(item1);
+            const itemP = document.createElement("p");
+            itemP.innerHTML = `${item1.nombre}`;
+            item.append(itemP);
+          }
+        });
+      });
+    }
+  });
+});
+
 function listaPacientes(array, container) {
   container.innerHTML = "";
   if (array.length === 0) {
@@ -164,7 +214,7 @@ patientListBtn.addEventListener("click", () => {
   patientListBtn.classList.add("d-none");
   patientListContainer.classList.remove("d-none");
   patientFormBtn.classList.remove("d-none");
-  listaPacientes(patientDB, patientItemContainer);
+  /*   listaPacientes(patientDB, patientItemContainer); */
   patientFormBtnNext.classList.add("d-none");
   analysisBtnBack.classList.add("d-none");
   analisysBtnFinish.classList.add("d-none");
@@ -186,9 +236,9 @@ const usersDB = [
   },
 ];
 
-function cambiarEstado(activate, deactivate) {
+function cambiarEstado(activate, desactivate) {
   activate.classList.toggle("d-none");
-  deactivate.classList.toggle("d-none");
+  desactivate.classList.toggle("d-none");
 }
 
 function validarUsuario(array, user, pass) {
@@ -325,6 +375,20 @@ function sumarPaciente() {
       analisisSumados,
       patientDB.length + 1
     )
+  );
+  cambiarEstado(analisys, talonContainer);
+  talonPaciente(talon);
+}
+
+function sumarPaciente2() {
+  savePatient(
+    patientFormInputName.value,
+    patientFormInputSurame.value,
+    patientFormInputDni.value,
+    patientFormInputMail.value,
+    patientFormInputGender.value,
+    patientFormInputAge.value,
+    analisisSumados
   );
   cambiarEstado(analisys, talonContainer);
   talonPaciente(talon);
@@ -568,7 +632,8 @@ analisysBtnFinish.addEventListener("click", () => {
       timer: 2000,
     });
   } else {
-    sumarPaciente();
+    /*     sumarPaciente(); */
+    sumarPaciente2();
     analysisBtnBack.classList.add("d-none");
     analisysBtnFinish.classList.add("d-none");
     talonBtnAddPatient.classList.remove("d-none");
