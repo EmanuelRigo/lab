@@ -5,15 +5,18 @@ import {
   getPatient,
 } from "./firebase.js";
 
+/*////ACCES///*/
+
 const accesInputEmail = document.getElementById("accesInputEmail");
 const accesInputPassword = document.getElementById("accesInputPassword");
 const accesCheckSession = document.getElementById("accesCheckSession");
 const accesBtn = document.getElementById("accesBtn");
 const acces = document.getElementById("acces");
+
+/*////PATIENT-FORM///*/
 const formPatientAnalisisTalon = document.getElementById(
   "formPatientAnalisisTalon"
 );
-
 const patientFormContainer = document.getElementById("patientFormContainer");
 const patientForm = document.getElementById("patientForm");
 const patientFormInputName = document.getElementById("patientFormInputName");
@@ -29,11 +32,13 @@ const patientFormInputAge = document.getElementById("patientFormInputAge");
 const patientFormBtnNext = document.getElementById("patientFormBtnNext");
 const patientFormWelcome = document.getElementById("patientFormWelcome");
 
+/*///ANALYSIS///*/
 const analysis = document.getElementById("analisys");
 const analysisContainer = document.getElementById("analysisContainer");
 const analisysBtnFinish = document.getElementById("analysisBtnFinish");
 const analysisBtnBack = document.getElementById("analysisBtnBack");
 
+/*///TALON///*/
 const talonContainer = document.getElementById("talonContainer");
 const talon = document.getElementById("talon");
 const talonBtnAddPatient = document.getElementById("talonBtnAddPatient");
@@ -672,7 +677,7 @@ analysisBtnBack.addEventListener("click", () => {
 signOff.addEventListener("click", cerrarSession);
 
 function cerrarSession() {
-  analisysListFalse(analisisDB);
+  /*  analisysListFalse(analisisDB); */
   localStorage.clear();
   sessionStorage.clear();
   patientFormContainer.classList.remove("d-none");
