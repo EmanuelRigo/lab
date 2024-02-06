@@ -1,12 +1,11 @@
 import {
-  getAnalysis2,
+  getAnalysis,
   savePatient,
   onGetPatient,
   getPatient,
 } from "./firebase.js";
 
 /*////ACCES///*/
-
 const accesInputEmail = document.getElementById("accesInputEmail");
 const accesInputPassword = document.getElementById("accesInputPassword");
 const accesCheckSession = document.getElementById("accesCheckSession");
@@ -43,95 +42,21 @@ const talonContainer = document.getElementById("talonContainer");
 const talon = document.getElementById("talon");
 const talonBtnAddPatient = document.getElementById("talonBtnAddPatient");
 
+/*///PATIENT-LIST///*/
 const patientListContainer = document.getElementById("patientListContainer");
 const patientItemContainer = document.getElementById("accordionFlushExample");
-const patientList = document.getElementById("patientList");
-
+/* const patientList = document.getElementById("patientList"); */
 const patientListBtn = document.getElementById("patientListBtn");
 const patientFormBtn = document.getElementById("patientFormBtn");
 const signOff = document.getElementById("signOff");
 
-const sinPacientes = document.getElementById("sinPacientes");
-
-function toCapitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
-
-function numberToWords(number) {
-  const units = [
-    "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
-    "eleven",
-    "twelve",
-    "thirteen",
-    "fourteen",
-    "fifteen",
-    "sixteen",
-    "seventeen",
-    "eighteen",
-    "nineteen",
-  ];
-
-  const tens = [
-    "",
-    "",
-    "twenty",
-    "thirty",
-    "forty",
-    "fifty",
-    "sixty",
-    "seventy",
-    "eighty",
-    "ninety",
-  ];
-
-  if (number < 20) {
-    return units[number];
-  } else if (number < 100) {
-    return (
-      tens[Math.floor(number / 10)] +
-      (number % 10 !== 0 ? " " + units[number % 10] : "")
-    );
-  } else if (number < 1000) {
-    return (
-      units[Math.floor(number / 100)] +
-      " hundred" +
-      (number % 100 !== 0 ? " and " + numberToWords(number % 100) : "")
-    );
-  } else if (number < 1000000) {
-    return (
-      numberToWords(Math.floor(number / 1000)) +
-      " thousand" +
-      (number % 1000 !== 0 ? " " + numberToWords(number % 1000) : "")
-    );
-  } else if (number < 1000000000) {
-    return (
-      numberToWords(Math.floor(number / 1000000)) +
-      " million" +
-      (number % 1000000 !== 0 ? " " + numberToWords(number % 1000000) : "")
-    );
-  } else {
-    return "Number too large to convert";
-  }
-}
-
+/*///FUNCION PARA TRAER Y ACTUALIZAR PACIENTES///*/
 window.addEventListener("DOMContentLoaded", async () => {
   onGetPatient((querySnapshot) => {
-    console.log(querySnapshot);
     patientDB = querySnapshot.docs.map((doc) => doc.data());
-    console.log(patientDB);
     if (querySnapshot.size == 0) {
       patientItemContainer.innerHTML = "";
-      console.log("no hay pacientes");
+
       let patientItem = document.createElement("div");
       patientItem.innerHTML = ` <div class="col-lg-10 bg-light rounded p-3">
       <h3 class="m-0">no hay pacientes</h3></div> `;
@@ -158,12 +83,9 @@ window.addEventListener("DOMContentLoaded", async () => {
       </div>
     </div>`;
         patientItemContainer.append(patientItem);
-
         const itemAnalysis = document.getElementsByName(doc.id);
-        console.log(itemAnalysis);
         itemAnalysis.forEach((item) => {
           for (let item1 of patient.analysis) {
-            console.log(item1);
             const itemP = document.createElement("p");
             itemP.innerHTML = `${item1.nombre}`;
             item.append(itemP);
@@ -174,48 +96,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-function listaPacientes(array, container) {
-  container.innerHTML = "";
-  if (array.length === 0) {
-    console.log("no hay pacientes");
-    let patientItem = document.createElement("div");
-    patientItem.innerHTML = ` <div class="col-lg-10 bg-light rounded p-3">
-    <h3 class="m-0">no hay pacientes</h3></div> `;
-    container.append(patientItem);
-  } else {
-    for (let item of array) {
-      let patientItem = document.createElement("div");
-      patientItem.className = "accordion-item";
-      patientItem.innerHTML = `  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${toCapitalize(
-        numberToWords(item.id).replace(/\s+/g, "")
-      )}" aria-expanded="false" aria-controls="flush-collapse${toCapitalize(
-        numberToWords(item.id).replace(/\s+/g, "")
-      )}">
-        ${item.name + " " + item.surname}
-      </button>
-    </h2>
-    <div id="flush-collapse${toCapitalize(
-      numberToWords(item.id).replace(/\s+/g, "")
-    )}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div name="${item.id}" class="accordion-body"></div>
-    </div>
-  </div>`;
-      container.append(patientItem);
-
-      const itemAnalysis = document.getElementsByName(item.id);
-      for (let item1 of itemAnalysis) {
-        for (let item2 of item.analysis) {
-          const itemP = document.createElement("p");
-          itemP.innerHTML = `${item2.nombre}`;
-          item1.append(itemP);
-        }
-      }
-    }
-  }
-}
-
 patientListBtn.addEventListener("click", () => {
   analysis.classList.add("d-none");
   talonContainer.classList.add("d-none");
@@ -224,7 +104,6 @@ patientListBtn.addEventListener("click", () => {
   patientListBtn.classList.add("d-none");
   patientListContainer.classList.remove("d-none");
   patientFormBtn.classList.remove("d-none");
-  /*   listaPacientes(patientDB, patientItemContainer); */
   patientFormBtnNext.classList.add("d-none");
   analysisBtnBack.classList.add("d-none");
   analisysBtnFinish.classList.add("d-none");
@@ -243,6 +122,12 @@ const usersDB = [
     nombre: "Maira",
     apellido: "lopez",
     password: "8787",
+  },
+  {
+    nombreUsuario: "pedro.lab",
+    nombre: "Pedro",
+    apellido: "lopez",
+    password: "1234",
   },
 ];
 
@@ -272,7 +157,6 @@ function guardarUsuario(datos, storage) {
     surname: datos.apellido,
     password: datos.password,
   };
-
   storage.setItem("usuario", JSON.stringify(userStorage));
 }
 
@@ -295,7 +179,6 @@ accesBtn.addEventListener("click", (e) => {
       accesInputEmail.value,
       accesInputPassword.value
     );
-
     if (!data) {
       Swal.fire({
         heightAuto: false,
@@ -356,41 +239,11 @@ function estaLogueado(usuario) {
 
 let patientDB = [];
 
-class Patient {
-  constructor(name, surname, dni, tel, gender, age, analysis, id) {
-    this.name = name;
-    this.surname = surname;
-    this.dni = dni;
-    this.tel = tel;
-    this.gender = gender;
-    this.age = age;
-    this.analysis = analysis;
-    this.id = id;
-  }
-}
-
 function saludar(usuario) {
   patientFormWelcome.innerHTML = `Hola ${usuario}`;
 }
 
 function sumarPaciente() {
-  patientDB.push(
-    new Patient(
-      patientFormInputName.value,
-      patientFormInputSurame.value,
-      patientFormInputDni.value,
-      patientFormInputMail.value,
-      patientFormInputGender.value,
-      patientFormInputAge.value,
-      analisisSumados,
-      patientDB.length + 1
-    )
-  );
-  cambiarEstado(analisys, talonContainer);
-  talonPaciente2(talon);
-}
-
-function sumarPaciente2() {
   savePatient(
     patientFormInputName.value,
     patientFormInputSurame.value,
@@ -401,12 +254,10 @@ function sumarPaciente2() {
     analisisSumados
   )
     .then((data) => {
-      console.log("Paciente guardado:", data);
       return getPatient(data);
     })
     .then((patientTicket) => {
-      console.log("ESTE ES EL PATIENT TICKET", patientTicket.data());
-      talonPaciente2(talon, patientTicket.data());
+      talonPaciente(talon, patientTicket.data());
       cambiarEstado(analisys, talonContainer);
     });
 }
@@ -452,28 +303,10 @@ patientFormBtnNext.addEventListener("click", (e) => {
 
 /////////Funciones de Analisis/////////
 
-/* const getAnalysis = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(fetch("analisis.json"));
-    }, 100);
-  });
-}; */
-
-/* async function consiguiendoDatos() {
-  const respuesta = await getAnalysis();
-  analisisDB = await respuesta.json();
-  cardsAnalisis(analisisDB, analysisContainer);
-}
-
-consiguiendoDatos(); */
-
 let analysisDB = [];
 
 window.addEventListener("DOMContentLoaded", async () => {
-  analysisDB = await getAnalysis2();
-  console.log(getAnalysis2());
-  console.log(analysisDB);
+  analysisDB = await getAnalysis();
   cardsAnalisis(analysisDB, analysisContainer);
 });
 
@@ -503,8 +336,6 @@ function cardsAnalisis(array, container) {
     } </button</div></div>`;
     container.append(card);
   }
-
-  /********/ ///////pasar a funciones asincronas////////******/
 
   const analisysBtnAdd = document.querySelectorAll(".analysis__card-btn");
 
@@ -538,7 +369,7 @@ function cardsAnalisis(array, container) {
 
 /////////Funciones de Talon/////////
 
-function talonPaciente2(container, patient) {
+function talonPaciente(container, patient) {
   let precioTotal = 0;
   const sumarPrecios = patient.analysis.map((item1) => item1.precio);
   for (let i = 0; i < sumarPrecios.length; i++) precioTotal += sumarPrecios[i];
@@ -592,66 +423,7 @@ function talonPaciente2(container, patient) {
   }
 }
 
-function talonPaciente(container) {
-  let precioTotal = 0;
-  const sumarPrecios = analisisSumados.map((item1) => item1.precio);
-  for (let i = 0; i < sumarPrecios.length; i++) precioTotal += sumarPrecios[i];
-
-  const cantidadDias = analisisSumados.map((item1) => item1.tiempo);
-  let diasTotal = Math.max(...cantidadDias);
-
-  container.innerHTML = "";
-  container.innerHTML = `<div class="talon_card row">
-  <div class="talon_card-body col-md-6">
-  <div class="talon__number-id">
-    identificador de analisis #${
-      patientDB.length + patientDB[patientDB.length - 1].dni
-    }
-  </div>
-    <h5 class="talon__name">${
-      patientDB[patientDB.length - 1].name +
-      " " +
-      patientDB[patientDB.length - 1].surname
-    }</h5>
-    <p>Genero: ${patientDB[patientDB.length - 1].gender} </p>
-    <p>Edad: ${patientDB[patientDB.length - 1].age}</p>
-    <p class="card-text">Dni: ${patientDB[patientDB.length - 1].dni}</p>
-    <p>Tel: ${patientDB[patientDB.length - 1].tel}</p>
-  </div>
-  <div class="col-md-6">
-    <table class="talon-table table caption-top">
-      <thead>
-        <tr>
-          <th class="talon__th" scope="col">Analisis</th>
-          <th class="talon__th" scope="col">Dias</th>
-          <th class="talon__th" scope="col">Precio</th>
-        </tr>
-      </thead>
-      <tbody id="talon__tbody">
-      </tbody>
-      <thead class="padding-tabla">
-      <tr class="table-secondary">
-        <th scope="col">Total</th>
-        <th scope="col">${diasTotal} </th>
-        <th scope="col">${precioTotal} </th>
-      </tr>
-      </thead>
-    </table> 
-  </div>
-</div>`;
-
-  for (let item of patientDB[patientDB.length - 1].analysis) {
-    const talonThead = document.getElementById("talon__tbody");
-    let trAnalysis = document.createElement("tr");
-
-    trAnalysis.innerHTML = `<td>${item.nombre}</td>
-    <td>${item.tiempo}</td>
-    <td>${item.precio}</td>`;
-
-    talonThead.append(trAnalysis);
-  }
-}
-
+/*devuelvo el valor false de cada analysis*/
 function analisysListFalse(array) {
   array.forEach((objeto) => {
     objeto.agregado = false;
@@ -662,7 +434,6 @@ function analisysListFalse(array) {
 talonBtnAddPatient.addEventListener("click", () => {
   cambiarEstado(talonContainer, patientFormContainer);
   analisysListFalse(analysisDB);
-  console.log(patientDB);
   patientFormBtnNext.classList.remove("d-none");
   talonBtnAddPatient.classList.add("d-none");
 });
@@ -677,7 +448,8 @@ analysisBtnBack.addEventListener("click", () => {
 signOff.addEventListener("click", cerrarSession);
 
 function cerrarSession() {
-  /*  analisysListFalse(analisisDB); */
+  analisysListFalse(analysisDB);
+  talonBtnAddPatient.classList.add("d-none");
   localStorage.clear();
   sessionStorage.clear();
   patientFormContainer.classList.remove("d-none");
@@ -694,6 +466,7 @@ function cerrarSession() {
   patientForm.reset();
 }
 
+/*Termino de agregar al paciente*/
 analisysBtnFinish.addEventListener("click", () => {
   if (analisisSumados.length == 0) {
     Swal.fire({
@@ -703,17 +476,16 @@ analisysBtnFinish.addEventListener("click", () => {
       timer: 2000,
     });
   } else {
-    /*     sumarPaciente(); */
-    sumarPaciente2();
+    sumarPaciente();
     analysisBtnBack.classList.add("d-none");
     analisysBtnFinish.classList.add("d-none");
     talonBtnAddPatient.classList.remove("d-none");
     patientForm.reset();
-    console.log(analisisSumados);
+
     analisisSumados = [];
-    console.log(analisisSumados);
+
     analisysListFalse(analysisDB);
-    console.log(analisisSumados);
+
     Swal.fire({
       heightAuto: false,
       icon: "success",

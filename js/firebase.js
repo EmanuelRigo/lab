@@ -23,7 +23,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 
-export const getAnalysis2 = async () => {
+export const getAnalysis = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "analysis"));
     const dataArray = querySnapshot.docs.map((doc) => doc.data());
