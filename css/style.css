@@ -156,6 +156,7 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
+  border: 8px solid #dedede;
 }
 .go-top-buttom span {
   position: absolute;
@@ -179,6 +180,10 @@ footer {
 }
 .show span {
   transform: translate(-50%, -50%) scale(1);
+}
+
+.text-justify {
+  text-align: justify;
 }
 
 @keyframes popup {
