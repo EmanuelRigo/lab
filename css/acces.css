@@ -289,16 +289,16 @@ body {
   height: 100%;
 }
 
+.patient-list__container {
+  height: 75vh;
+}
+
 @media screen and (max-width: 576px) {
   .mq-vh {
     height: 100%;
   }
 
   .talon__container {
-    height: 75vh;
-  }
-
-  .patient-list__container {
     height: 75vh;
   }
 

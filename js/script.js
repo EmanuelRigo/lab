@@ -324,15 +324,15 @@ function cardsAnalisis(array, container) {
         ? "bg-primary  "
         : "analysis__card-titulo-agregado "
     }"><h6 class="m-0 my-md-3 text-light">${item.nombre} </h6></div>
-    <div class="col-5  p-0 p-md-3 col-md-12 d-flex align-items-center d-lg-block"> <p class="px-1 p-md-0"> <span class="d-none d-lg-inline-block">precio:</span> $${
+    <div class="col-5  p-0 p-md-3 col-md-12 d-flex align-items-center d-lg-block"> <p class="px-1 p-md-0 pe-md-1 "> <span class="d-none  d-lg-inline-block">precio:</span> $${
       item.precio
     } </p> <p>dias: ${item.tiempo} </p></div>
     <div class="col-1 col-md-12 d-flex px-0"><button type="button" data-filter="${
       item.nombre
     }" class="analysis__card-btn btn btn-success d-flex p-0 d-flex align-items-center justify-content-center">${
       item.agregado == false
-        ? `<span class="d-none d-lg-block px-2">agregar</span> <i class="bi bi-clipboard-plus"></i>`
-        : `<span class="d-none d-lg-block px-2">remover</span> <i class="bi bi-clipboard-x"></i>`
+        ? `<span class="d-none d-md-block px-2">agregar</span> <i class="bi bi-clipboard-plus"></i>`
+        : `<span class="d-none d-md-block px-2">remover</span> <i class="bi bi-clipboard-x"></i>`
     } </button</div></div>`;
     container.append(card);
   }
